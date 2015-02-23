@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<link href="{{asset('packages/garcia/wmenu/menu/style.css')}}" rel="stylesheet">
+		<link href="{{asset('vendor/garcia/wmenu/menu/style.css')}}" rel="stylesheet">
 
 		<script type="text/javascript">
 			var menus = {
@@ -230,10 +230,10 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-			<script type="text/javascript" src="{{asset('packages/garcia/wmenu/menu/scripts.js')}}"></script>
+			<script type="text/javascript" src="{{asset('vendor/garcia/wmenu/menu/scripts.js')}}"></script>
 
-			<script type="text/javascript" src="{{asset('packages/garcia/wmenu/menu/scripts2.js')}}"></script>
-			<script type="text/javascript" src="{{asset('packages/garcia/wmenu/menu/menu.js')}}"></script>
+			<script type="text/javascript" src="{{asset('vendor/garcia/wmenu/menu/scripts2.js')}}"></script>
+			<script type="text/javascript" src="{{asset('vendor/garcia/wmenu/menu/menu.js')}}"></script>
 
 			<script>
 				var arraydata = [];     
