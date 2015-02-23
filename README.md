@@ -15,9 +15,6 @@ domain.com/menuw
 	}
 	
 ```
-And made with laravel!
-
-
 
 
 ```
