@@ -157,7 +157,7 @@ function getmenus() {
 							type : 'POST',
 							success : function(response) {
 
-								window.location = menuw+"?menu=" + response.resp
+								window.location = menuwr+"?menu=" + response.resp
 
 							}
 						});
