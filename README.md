@@ -1,13 +1,13 @@
 # wmenu
 laravel package menu like wordpress
 
-php artisan asset:publish --bench="garcia/wmenu"
 
 ```
 	'providers' => array(
 		'Garcia\Wmenu\WmenuServiceProvider',
 	),
 ```
+
 
 ```
 CREATE TABLE `menus` (
@@ -31,3 +31,5 @@ CREATE TABLE `menu_items` (
 ) ENGINE=InnoDB AUTO_INCREMENT=280 DEFAULT CHARSET=latin1;
 
 ```
+php artisan asset:publish --bench="garcia/wmenu"
+
