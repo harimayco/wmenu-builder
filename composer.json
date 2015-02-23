@@ -1,0 +1,28 @@
+{
+    "name": "garcia/wmenu",
+    "description": "",
+        "keywords": ["menu", "wordpress menu", "wordpress", "laravel", "cms","wmenu"],
+
+    "authors": [
+        {
+            "name": "Cristian Garcia",
+            "email": "informacion@cristiangarcia.co"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/models",
+            "src/controllers"
+
+        ],
+        "psr-0": {
+            "Garcia\\Wmenu\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
