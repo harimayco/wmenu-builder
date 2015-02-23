@@ -34,9 +34,9 @@
 					<div id="wpbody-content">
 
 						<div class="wrap">
-							<h2 class="nav-tab-wrapper"><a href="{{route('menuw')}}" class="nav-tab nav-tab-active">Edit Menu</a><!---<a href="{{route('menuw')}}?action=locations" class="nav-tab">Gestionar lugares</a>--></h2>
+							<h2 class="nav-tab-wrapper"><a href="{{route('wmenuindex')}}" class="nav-tab nav-tab-active">Edit Menu</a><!---<a href="{{route('wmenuindex')}}?action=locations" class="nav-tab">Gestionar lugares</a>--></h2>
 							<div class="manage-menus">
-								<form method="get" action="{{route('menuw')}}">
+								<form method="get" action="{{route('wmenuindex')}}">
 									<label for="menu" class="selected-menu">Select the menu you want to edit:</label>
 
 									{{ Form::select('menu', $menulist,0) }}
@@ -44,7 +44,7 @@
 									<span class="submit-btn">
 										<input type="submit" class="button-secondary" value="Choose">
 									</span>
-									<span class="add-new-menu-action"> or <a href="{{route('menuw')}}?action=edit&menu=0">Create new menu</a>. </span>
+									<span class="add-new-menu-action"> or <a href="{{route('wmenuindex')}}?action=edit&menu=0">Create new menu</a>. </span>
 								</form>
 							</div>
 							<div id="nav-menus-frame">
@@ -145,7 +145,7 @@
 																<dl class="menu-item-bar">
 																	<dt class="menu-item-handle">
 																		<span class="item-title"> <span class="menu-item-title"> <span id="menutitletemp_{{$m->id}}">{{$m->label}}</span> <span style="color: transparent;">|{{$m->id}}|</span> </span> <span class="is-submenu" style="@if($m->depth==0)display: none;@endif">Subelement</span> </span>
-																		<span class="item-controls"> <span class="item-type">Link</span> <span class="item-order hide-if-js"> <a href="{{route('menuw')}}?action=move-up-menu-item&menu-item={{$m->id}}&_wpnonce=8b3eb7ac44" class="item-move-up"><abbr title="Move Up">↑</abbr></a> | <a href="{{route('menuw')}}?action=move-down-menu-item&menu-item={{$m->id}}&_wpnonce=8b3eb7ac44" class="item-move-down"><abbr title="Move Down">↓</abbr></a> </span> <a class="item-edit" id="edit-{{$m->id}}" title=" " href="{{route('menuw')}}?edit-menu-item={{$m->id}}#menu-item-settings-{{$m->id}}"> </a> </span>
+																		<span class="item-controls"> <span class="item-type">Link</span> <span class="item-order hide-if-js"> <a href="{{route('wmenuindex')}}?action=move-up-menu-item&menu-item={{$m->id}}&_wpnonce=8b3eb7ac44" class="item-move-up"><abbr title="Move Up">↑</abbr></a> | <a href="{{route('wmenuindex')}}?action=move-down-menu-item&menu-item={{$m->id}}&_wpnonce=8b3eb7ac44" class="item-move-down"><abbr title="Move Down">↓</abbr></a> </span> <a class="item-edit" id="edit-{{$m->id}}" title=" " href="{{route('wmenuindex')}}?edit-menu-item={{$m->id}}#menu-item-settings-{{$m->id}}"> </a> </span>
 																	</dt>
 																</dl>
 
@@ -172,14 +172,14 @@
 																	</p>
 
 																	<p class="field-move hide-if-no-js description description-wide">
-																		<label> <span>Move</span> <a href="{{route('menuw')}}?action=edit&menu=26#" class="menus-move-up" style="display: none;">Move up</a> <a href="{{route('menuw')}}?action=edit&menu=26#" class="menus-move-down" title="Mover uno abajo" style="display: inline;">Move Down</a> <a href="{{route('menuw')}}?action=edit&menu=26#" class="menus-move-left" style="display: none;"></a> <a href="{{route('menuw')}}?action=edit&menu=26#" class="menus-move-right" style="display: none;"></a> <a href="{{route('menuw')}}?action=edit&menu=26#" class="menus-move-top" style="display: none;">Top</a> </label>
+																		<label> <span>Move</span> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-up" style="display: none;">Move up</a> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-down" title="Mover uno abajo" style="display: inline;">Move Down</a> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-left" style="display: none;"></a> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-right" style="display: none;"></a> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-top" style="display: none;">Top</a> </label>
 																	</p>
 
 																	<div class="menu-item-actions description-wide submitbox">
 
-																		<a class="item-delete submitdelete deletion" id="delete-{{$m->id}}" href="{{route('menuw')}}?action=delete-menu-item&menu-item={{$m->id}}&_wpnonce=2844002501">Delete</a>
+																		<a class="item-delete submitdelete deletion" id="delete-{{$m->id}}" href="{{route('wmenuindex')}}?action=delete-menu-item&menu-item={{$m->id}}&_wpnonce=2844002501">Delete</a>
 																		<span class="meta-sep hide-if-no-js"> | </span>
-																		<a class="item-cancel submitcancel hide-if-no-js button-secondary" id="cancel-{{$m->id}}" href="{{route('menuw')}}?edit-menu-item={{$m->id}}&cancel=1424297719#menu-item-settings-{{$m->id}}">Cancel</a>
+																		<a class="item-cancel submitcancel hide-if-no-js button-secondary" id="cancel-{{$m->id}}" href="{{route('wmenuindex')}}?edit-menu-item={{$m->id}}&cancel=1424297719#menu-item-settings-{{$m->id}}">Cancel</a>
 																		<span class="meta-sep hide-if-no-js"> | </span>
 																		<a onclick="updateitem({{$m->id}})" class="button button-primary updatemenu" id="update-{{$m->id}}" href="javascript:void(0)">Update item</a>
 
