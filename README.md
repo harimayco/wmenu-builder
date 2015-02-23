@@ -1,6 +1,20 @@
 # wmenu
 laravel package menu like wordpress
 
+This is a menu that has the functionality of wordpress, and ease of creating editing and selection, some css and javascripts property was used wordpress.
+
+It has a nestable menu and sortable.
+
+This project has two versions of menu creator
+
+LIKE WORDPRESS  V2 http://localhost:8888/laravel-wordpress-menu-clone/public/menuw
+
+NORMAL V1 http://localhost:8888/laravel-wordpress-menu-clone/public/menucreator
+
+And made with laravel!
+
+
+
 
 ```
 	'providers' => array(
@@ -33,3 +47,6 @@ CREATE TABLE `menu_items` (
 ```
 php artisan asset:publish --bench="garcia/wmenu"
 
+![ScreenShot](http://oi59.tinypic.com/m935vp.jpg)
+![ScreenShot](http://oi61.tinypic.com/4g2bli.jpg)
+![ScreenShot](http://oi62.tinypic.com/28bb6eq.jpg)
