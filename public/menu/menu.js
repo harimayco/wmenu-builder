@@ -43,7 +43,7 @@ function getmenus() {
 							idmenu : $("#idmenu").val()
 						},
 
-						url : addcustommenu,
+						url : addcustommenur,
 						type : 'POST',
 						success : function(response) {
 							$("#spincustomu").hide();
@@ -66,7 +66,7 @@ function getmenus() {
 							id : id
 						},
 
-						url :updateitem,
+						url :updateitemr,
 						type : 'POST',
 						success : function(response) {
 
@@ -88,7 +88,7 @@ function getmenus() {
 							idmenu : $("#idmenu").val()
 						},
 
-						url : generatemenucontrol,
+						url : generatemenucontrolr,
 						type : 'POST',
 						success : function(response) {
 
@@ -106,7 +106,7 @@ function getmenus() {
 							id : id
 						},
 
-						url :deleteitemmenu,
+						url :deleteitemmenur,
 						type : 'POST',
 						success : function(response) {
 
@@ -126,7 +126,7 @@ function getmenus() {
 								id : $("#idmenu").val()
 							},
 
-							url : deletemenug,
+							url : deletemenugr,
 							type : 'POST',
 							success : function(response) {
 
@@ -153,7 +153,7 @@ function getmenus() {
 								menuname : $("#menu-name").val(),
 							},
 
-							url :createnewmenu,
+							url :createnewmenur,
 							type : 'POST',
 							success : function(response) {
 
