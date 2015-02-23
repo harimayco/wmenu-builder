@@ -244,7 +244,7 @@
 				var deleteitemmenu="{{route('deleteitemmenu')}}";
 				var deletemenug="{{route('deletemenug')}}";
 				var createnewmenu="{{route('createnewmenu')}}";
-				var menuw="{{route('menuw')}}";
+				var menuw="{{route('wmenuindex')}}";
 			</script>
 			<div class="clear"></div>
 		</div>
