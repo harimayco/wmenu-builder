@@ -8,11 +8,13 @@ It has a nestable menu and sortable.
 This project has two versions of menu creator
 
 domain.com/menuw
-
+```
 "require": {
 		"laravel/framework": "4.2.*",
 		"garcia/wmenu": "dev-master"
 	}
+	
+```
 And made with laravel!
 
 
