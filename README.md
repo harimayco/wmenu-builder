@@ -21,8 +21,9 @@ domain.com/menuw
 	'providers' => array(
 		'Garcia\Wmenu\WmenuServiceProvider',
 	),
+	
 ```
-
+php artisan asset:publish garcia/wmenu
 
 ```
 CREATE TABLE `menus` (
@@ -46,7 +47,6 @@ CREATE TABLE `menu_items` (
 ) ENGINE=InnoDB AUTO_INCREMENT=280 DEFAULT CHARSET=latin1;
 
 ```
-php artisan asset:publish --bench="garcia/wmenu"
 
 ![ScreenShot](http://oi59.tinypic.com/m935vp.jpg)
 ![ScreenShot](http://oi61.tinypic.com/4g2bli.jpg)
