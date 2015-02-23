@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<link href="{{asset('menu/style.css')}}" rel="stylesheet">
+		<link href="{{asset('packages/garcia/wmenu/menu/style.css')}}" rel="stylesheet">
 
 		<script type="text/javascript">
 			var menus = {
@@ -230,181 +230,21 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-			<script type="text/javascript" src="{{asset('menu/scripts.js')}}"></script>
+			<script type="text/javascript" src="{{asset('packages/garcia/wmenu/menu/scripts.js')}}"></script>
 
-			<script type="text/javascript" src="{{asset('menu/scripts2.js')}}"></script>
+			<script type="text/javascript" src="{{asset('packages/garcia/wmenu/menu/scripts2.js')}}"></script>
+			<script type="text/javascript" src="{{asset('packages/garcia/wmenu/menu/menu.js')}}"></script>
+
 			<script>
-				var arraydata = [];
-				function getmenus() {
-					$("#spinsavemenu").show()
-
-					var cont = 0;
-					$("#menu-to-edit li").each(function(index) {
-						var dept = 0;
-						for (var i = 0; i < $("#menu-to-edit li").length; i++) {
-
-							var n = $(this).attr("class").indexOf("menu-item-depth-" + i);
-							if (n != -1) {
-								dept = i;
-							}
-						};
-
-						var textoiner = $(this).find(".item-edit").context.outerText;
-
-						var textoexplotado = textoiner.split("|");
-						var padre = 0;
-						if (textoexplotado.length == 7) {
-							padre = textoexplotado[5]
-						}
-
-						var id = this.id.split("-");
-
-						arraydata.push({
-							depth : dept,
-							id : id[2],
-							parent : padre,
-							sort : cont
-						})
-						cont++;
-					});
-					actualizarmenu();
-				}
-
-				function addcustommenu() {
-					$("#spincustomu").show();
-
-					$.ajax({
-						data : {
-							labelmenu : $("#custom-menu-item-name").val(),
-							linkmenu : $("#custom-menu-item-url").val(),
-							idmenu : $("#idmenu").val()
-						},
-
-						url : "{{route('addcustommenu')}}",
-						type : 'POST',
-						success : function(response) {
-							$("#spincustomu").hide();
-							window.location = "";
-
-						}
-					});
-				}
-
-				function updateitem(id) {
-
-					var label = $("#idlabelmenu_" + id).val()
-					var clases = $("#clases_menu_" + id).val()
-					var url = $("#url_menu_" + id).val()
-					$.ajax({
-						data : {
-							label : label,
-							clases : clases,
-							url : url,
-							id : id
-						},
-
-						url : "{{route('updateitem')}}",
-						type : 'POST',
-						success : function(response) {
-
-							$("#menutitletemp_" + id).val(label)
-
-							console.log("aqu llega")
-							//$("#spinsavemenu").hide();
-						}
-					});
-				}
-
-				function actualizarmenu() {
-
-					$.ajax({
-						dataType : "json",
-						data : {
-							arraydata : arraydata,
-							menuname : $("#menu-name").val(),
-							idmenu : $("#idmenu").val()
-						},
-
-						url : "{{route('generatemenucontrol')}}",
-						type : 'POST',
-						success : function(response) {
-
-							console.log("aqu llega")
-							$("#spinsavemenu").hide();
-						}
-					});
-				}
-
-				function deleteitem(id) {
-					$.ajax({
-						dataType : "json",
-						data : {
-
-							id : id
-						},
-
-						url : "{{route('deleteitemmenu')}}",
-						type : 'POST',
-						success : function(response) {
-
-						}
-					});
-				}
-
-				function deletemenu() {
-
-					var r = confirm("Do you want to delete this menu ?");
-					if (r == true) {
-						$.ajax({
-							dataType : "json",
-
-							data : {
-
-								id : $("#idmenu").val()
-							},
-
-							url : "{{route('deletemenug')}}",
-							type : 'POST',
-							success : function(response) {
-
-								if (!!response.error) {
-									alert(response.resp)
-								}
-
-							}
-						});
-
-					} else {
-						return false;
-					}
-
-				}
-
-				function createnewmenu() {
-
-					if (!!$("#menu-name").val()) {
-						$.ajax({
-							dataType : "json",
-
-							data : {
-								menuname : $("#menu-name").val(),
-							},
-
-							url : "{{route('createnewmenu')}}",
-							type : 'POST',
-							success : function(response) {
-
-								window.location = "{{route('menuw')}}?menu=" + response.resp
-
-							}
-						});
-					} else {
-						alert("Enter menu name!")
-						$("#menu-name").focus();
-						return false;
-					}
-
-				}
+				var arraydata = [];     
+				
+				var addcustommenu= "{{route('addcustommenu')}}";
+				var updateitem= "{{route('updateitem')}}";
+				var generatemenucontrol="{{route('generatemenucontrol')}}";
+				var deleteitemmenu="{{route('deleteitemmenu')}}";
+				var deletemenug="{{route('deletemenug')}}";
+				var createnewmenu="{{route('createnewmenu')}}";
+				var menuw="{{route('menuw')}}";
 			</script>
 			<div class="clear"></div>
 		</div>
