@@ -238,13 +238,13 @@
 			<script>
 				var arraydata = [];     
 				
-				var addcustommenu= "{{route('addcustommenu')}}";
-				var updateitem= "{{route('updateitem')}}";
-				var generatemenucontrol="{{route('generatemenucontrol')}}";
-				var deleteitemmenu="{{route('deleteitemmenu')}}";
-				var deletemenug="{{route('deletemenug')}}";
-				var createnewmenu="{{route('createnewmenu')}}";
-				var menuw="{{route('wmenuindex')}}";
+				var addcustommenur= "{{route('addcustommenu')}}";
+				var updateitemr= "{{route('updateitem')}}";
+				var generatemenucontrolr="{{route('generatemenucontrol')}}";
+				var deleteitemmenur="{{route('deleteitemmenu')}}";
+				var deletemenugr="{{route('deletemenug')}}";
+				var createnewmenur="{{route('createnewmenu')}}";
+				var menuwr="{{route('wmenuindex')}}";
 			</script>
 			<div class="clear"></div>
 		</div>
