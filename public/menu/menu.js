@@ -1,21 +1,24 @@
+var arraydata = [];
 function getmenus() {
     $("#spinsavemenu").show()
+
     var cont = 0;
     $("#menu-to-edit li").each(function(index) {
         var dept = 0;
         for (var i = 0; i < $("#menu-to-edit li").length; i++) {
+
             var n = $(this).attr("class").indexOf("menu-item-depth-" + i);
             if (n != -1) {
                 dept = i;
             }
         };
         var textoiner = $(this).find(".item-edit").context.outerText;
+	  var id = this.id.split("-");
         var textoexplotado = textoiner.split("|"); 
         var padre = 0;  
-        if (!!textoexplotado[textoexplotado.length-2]) {  
+        if (!!textoexplotado[textoexplotado.length-2] && textoexplotado[textoexplotado.length-2]!= id[2]) {  
             padre = textoexplotado[textoexplotado.length-2]
         }
-        var id = this.id.split("-");
         arraydata.push({
             depth : dept,
             id : id[2],
@@ -24,7 +27,7 @@ function getmenus() {
         })
         cont++;
     });
- 	actualizarmenu();
+ actualizarmenu();
 }
 
 				function addcustommenu() {
