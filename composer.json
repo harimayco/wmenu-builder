@@ -1,28 +1,22 @@
 {
-    "name": "garcia/wmenu",
-    "description": "",
-        "keywords": ["menu", "wordpress menu", "wordpress", "laravel", "cms","wmenu"],
-
+    "name": "harimayco/laravel-menu",
+    "description": "drag and drop menu generator like wordpress for laravel 5",
     "authors": [
+    	{
+            "name": "Rendy Harimayco",
+            "email": "rendyharimayco@gmail.com",
+            "role": "Developer"
+        },
         {
             "name": "Cristian Garcia",
-            "email": "informacion@cristiangarcia.co"
+            "email": "informacion@cristiangarcia.co",
+            "role" : "Original Developer"
         }
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
+        "illuminate/support": "5.*"
     },
-    "autoload": {
-        "classmap": [
-            "src/migrations",
-            "src/models",
-            "src/controllers"
-
-        ],
-        "psr-0": {
-            "Garcia\\Wmenu\\": "src/"
-        }
-    },
+    "license": "MIT",
     "minimum-stability": "stable"
 }

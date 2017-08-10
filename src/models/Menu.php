@@ -1,6 +1,10 @@
 <?php
 
-class Menu extends Eloquent {
+namespace Harimayco\Menu\Models;
 
+use Illuminate\Database\Eloquent\Model;
 
+class Menu extends Model
+{
+    //
 }

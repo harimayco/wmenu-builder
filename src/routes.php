@@ -1,12 +1,11 @@
-<?php 
+<?php
 
-Route::get('/wmenuindex', array('as' => 'wmenuindex','uses'=>'WmenuController@wmenuindex'));
-
-Route::post('/addcustommenu', array('as' => 'addcustommenu','uses'=>'WmenuController@addcustommenu'));
-Route::post('/deleteitemmenu', array('as' => 'deleteitemmenu','uses'=>'WmenuController@deleteitemmenu'));
-Route::post('/deletemenug', array('as' => 'deletemenug','uses'=>'WmenuController@deletemenug'));
-Route::post('/createnewmenu', array('as' => 'createnewmenu','uses'=>'WmenuController@createnewmenu'));
-Route::post('/generatemenucontrol', array('as' => 'generatemenucontrol','uses'=>'WmenuController@generatemenucontrol'));
-Route::post('/updateitem', array('as' => 'updateitem','uses'=>'WmenuController@updateitem'));
-
-   
+Route::middleware(config('menu.middleware'))->group(function () {
+	//Route::get('wmenuindex', array('uses'=>'\Harimayco\Menu\Controllers\MenuController@wmenuindex'));
+	Route::post('harimayco/addcustommenu', array( 'as' => 'haddcustommenu', 'uses'=>'\Harimayco\Menu\Controllers\MenuController@addcustommenu'));
+	Route::post('harimayco/deleteitemmenu', array('as' => 'hdeleteitemmenu', 'uses'=>'\Harimayco\Menu\Controllers\MenuController@deleteitemmenu'));
+	Route::post('harimayco/deletemenug', array('as' => 'hdeletemenug', 'uses'=>'\Harimayco\Menu\Controllers\MenuController@deletemenug'));
+	Route::post('harimayco/createnewmenu', array('as' => 'hcreatenewmenu', 'uses'=>'\Harimayco\Menu\Controllers\MenuController@createnewmenu'));
+	Route::post('harimayco/generatemenucontrol', array('as' => 'hgeneratemenucontrol', 'uses'=>'\Harimayco\Menu\Controllers\MenuController@generatemenucontrol'));
+	Route::post('harimayco/updateitem', array('as' => 'hupdateitem', 'uses'=>'\Harimayco\Menu\Controllers\MenuController@updateitem'));
+});

@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"  lang="es-MX">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Menús </title>
-		<script type="text/javascript"></script>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<?php
+$currentUrl = url()->current();
+$currentQuery = Input::query();
+
+?>
 
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<link href="{{asset('packages/garcia/wmenu/menu/style.css')}}" rel="stylesheet">
+		<link href="{{asset('vendor/harimayco-menu/style.css')}}" rel="stylesheet">
 
 		<script type="text/javascript">
 			var menus = {
@@ -23,33 +21,38 @@
 				"subMenuFocus" : "%1$s. Menu of subelement %2$d of %3$s."
 			};
 		</script>
-
-	</head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<body class="wp-admin wp-core-ui js   menu-max-depth-0 nav-menus-php auto-fold admin-bar ">
-
+	<script>
+	$.ajaxSetup({
+	    headers: {
+	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	    }
+	});
+</script>
+<div id="hwpwrap">
+	<div class="custom-wp-admin wp-admin wp-core-ui js   menu-max-depth-0 nav-menus-php auto-fold admin-bar">
 		<div id="wpwrap">
 			<div id="wpcontent">
 				<div id="wpbody">
 					<div id="wpbody-content">
 
 						<div class="wrap">
-							<h2 class="nav-tab-wrapper"><a href="{{route('wmenuindex')}}" class="nav-tab nav-tab-active">Edit Menu</a><!---<a href="{{route('wmenuindex')}}?action=locations" class="nav-tab">Gestionar lugares</a>--></h2>
+							
 							<div class="manage-menus">
-								<form method="get" action="{{route('wmenuindex')}}">
+								<form method="get" action="{{ $currentUrl }}">
 									<label for="menu" class="selected-menu">Select the menu you want to edit:</label>
 
-									{{ Form::select('menu', $menulist,0) }}
+									{{ Form::select('menu', $menulist) }}
 
 									<span class="submit-btn">
 										<input type="submit" class="button-secondary" value="Choose">
 									</span>
-									<span class="add-new-menu-action"> or <a href="{{route('wmenuindex')}}?action=edit&menu=0">Create new menu</a>. </span>
+									<span class="add-new-menu-action"> or <a href="{{ $currentUrl }}?action=edit&menu=0">Create new menu</a>. </span>
 								</form>
 							</div>
 							<div id="nav-menus-frame">
 
-								@if(Input::has('menu'))
+								@if(Input::has('menu')  && !empty(request()->input("menu")))
 								<div id="menu-settings-column" class="metabox-holder">
 
 									<div class="clear"></div>
@@ -63,13 +66,13 @@
 														<div class="inside">
 															<div class="customlinkdiv" id="customlinkdiv">
 																<p id="menu-item-url-wrap">
-																	<label class="howto" for="custom-menu-item-url"> <span>URL</span>
+																	<label class="howto" for="custom-menu-item-url"> <span>URL</span>&nbsp;&nbsp;&nbsp;
 																		<input id="custom-menu-item-url" name="url" type="text" class="code menu-item-textbox" value="http://">
 																	</label>
 																</p>
 
 																<p id="menu-item-name-wrap">
-																	<label class="howto" for="custom-menu-item-name"> <span>Label</span>
+																	<label class="howto" for="custom-menu-item-name"> <span>Label</span>&nbsp;
 																		<input id="custom-menu-item-name" name="label" type="text" class="regular-text menu-item-textbox input-with-default-title" title="Label menu">
 																	</label>
 																</p>
@@ -145,7 +148,7 @@
 																<dl class="menu-item-bar">
 																	<dt class="menu-item-handle">
 																		<span class="item-title"> <span class="menu-item-title"> <span id="menutitletemp_{{$m->id}}">{{$m->label}}</span> <span style="color: transparent;">|{{$m->id}}|</span> </span> <span class="is-submenu" style="@if($m->depth==0)display: none;@endif">Subelement</span> </span>
-																		<span class="item-controls"> <span class="item-type">Link</span> <span class="item-order hide-if-js"> <a href="{{route('wmenuindex')}}?action=move-up-menu-item&menu-item={{$m->id}}&_wpnonce=8b3eb7ac44" class="item-move-up"><abbr title="Move Up">↑</abbr></a> | <a href="{{route('wmenuindex')}}?action=move-down-menu-item&menu-item={{$m->id}}&_wpnonce=8b3eb7ac44" class="item-move-down"><abbr title="Move Down">↓</abbr></a> </span> <a class="item-edit" id="edit-{{$m->id}}" title=" " href="{{route('wmenuindex')}}?edit-menu-item={{$m->id}}#menu-item-settings-{{$m->id}}"> </a> </span>
+																		<span class="item-controls"> <span class="item-type">Link</span> <span class="item-order hide-if-js"> <a href="{{ $currentUrl }}?action=move-up-menu-item&menu-item={{$m->id}}&_wpnonce=8b3eb7ac44" class="item-move-up"><abbr title="Move Up">↑</abbr></a> | <a href="{{ $currentUrl }}?action=move-down-menu-item&menu-item={{$m->id}}&_wpnonce=8b3eb7ac44" class="item-move-down"><abbr title="Move Down">↓</abbr></a> </span> <a class="item-edit" id="edit-{{$m->id}}" title=" " href="{{ $currentUrl }}?edit-menu-item={{$m->id}}#menu-item-settings-{{$m->id}}"> </a> </span>
 																	</dt>
 																</dl>
 
@@ -172,14 +175,14 @@
 																	</p>
 
 																	<p class="field-move hide-if-no-js description description-wide">
-																		<label> <span>Move</span> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-up" style="display: none;">Move up</a> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-down" title="Mover uno abajo" style="display: inline;">Move Down</a> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-left" style="display: none;"></a> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-right" style="display: none;"></a> <a href="{{route('wmenuindex')}}?action=edit&menu=26#" class="menus-move-top" style="display: none;">Top</a> </label>
+																		<label> <span>Move</span> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-up" style="display: none;">Move up</a> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-down" title="Mover uno abajo" style="display: inline;">Move Down</a> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-left" style="display: none;"></a> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-right" style="display: none;"></a> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-top" style="display: none;">Top</a> </label>
 																	</p>
 
 																	<div class="menu-item-actions description-wide submitbox">
 
-																		<a class="item-delete submitdelete deletion" id="delete-{{$m->id}}" href="{{route('wmenuindex')}}?action=delete-menu-item&menu-item={{$m->id}}&_wpnonce=2844002501">Delete</a>
+																		<a class="item-delete submitdelete deletion" id="delete-{{$m->id}}" href="{{ $currentUrl }}?action=delete-menu-item&menu-item={{$m->id}}&_wpnonce=2844002501">Delete</a>
 																		<span class="meta-sep hide-if-no-js"> | </span>
-																		<a class="item-cancel submitcancel hide-if-no-js button-secondary" id="cancel-{{$m->id}}" href="{{route('wmenuindex')}}?edit-menu-item={{$m->id}}&cancel=1424297719#menu-item-settings-{{$m->id}}">Cancel</a>
+																		<a class="item-cancel submitcancel hide-if-no-js button-secondary" id="cancel-{{$m->id}}" href="{{ $currentUrl }}?edit-menu-item={{$m->id}}&cancel=1424297719#menu-item-settings-{{$m->id}}">Cancel</a>
 																		<span class="meta-sep hide-if-no-js"> | </span>
 																		<a onclick="updateitem({{$m->id}})" class="button button-primary updatemenu" id="update-{{$m->id}}" href="javascript:void(0)">Update item</a>
 
@@ -230,25 +233,24 @@
 				</div>
 				<div class="clear"></div>
 			</div>
-			<script type="text/javascript" src="{{asset('packages/garcia/wmenu/menu/scripts.js')}}"></script>
+			<script type="text/javascript" src="{{asset('vendor/harimayco-menu/scripts.js')}}"></script>
 
-			<script type="text/javascript" src="{{asset('packages/garcia/wmenu/menu/scripts2.js')}}"></script>
-			<script type="text/javascript" src="{{asset('packages/garcia/wmenu/menu/menu.js')}}"></script>
+			<script type="text/javascript" src="{{asset('vendor/harimayco-menu/scripts2.js')}}"></script>
+			<script type="text/javascript" src="{{asset('vendor/harimayco-menu/menu.js')}}"></script>
 
 			<script>
 				var arraydata = [];     
 				
-				var addcustommenur= "{{route('addcustommenu')}}";
-				var updateitemr= "{{route('updateitem')}}";
-				var generatemenucontrolr="{{route('generatemenucontrol')}}";
-				var deleteitemmenur="{{route('deleteitemmenu')}}";
-				var deletemenugr="{{route('deletemenug')}}";
-				var createnewmenur="{{route('createnewmenu')}}";
-				var menuwr="{{route('wmenuindex')}}";
+				var addcustommenur= '{{ route("haddcustommenu") }}';
+				var updateitemr= '{{ route("hupdateitem")}}';
+				var generatemenucontrolr= '{{ route("hgeneratemenucontrol") }}';
+				var deleteitemmenur= '{{ route("hdeleteitemmenu") }}';
+				var deletemenugr= '{{ route("hdeletemenug") }}';
+				var createnewmenur= '{{ route("hcreatenewmenu") }}';
+				var csrftoken="{{ csrf_token() }}";
 			</script>
 			<div class="clear"></div>
 		</div>
 
-	</body>
-
-</html>
+</div>
+</div>
