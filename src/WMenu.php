@@ -17,19 +17,31 @@ class WMenu
 		$menulist = $menulist->pluck('name', 'id')->prepend('Select menu', 0)-> all();
 
 		//$menulist[0] = "Select menu";
-		if (request()->has("action") || empty(request()->input("menu")) ) {
+		if ( (request()->has("action")  && empty(request()->input("menu"))) || request()->input("menu") == '0' ) {
 			return view('vendor.harimayco-menu.menu') -> with("menulist", $menulist);
 		} else {
 
 			$menu = Menu::find(request()->input("menu"));
 			$menus = $menuitems -> getall(request()->input("menu"));
 
-			
-
 			$data = [ 'menus' => $menus, 'indmenu' => $menu, 'menulist' => $menulist ];
-			\Debugbar::info();
+			//\Debugbar::info();
 			return view('vendor.harimayco-menu.menu', $data);
 		}
 
+	}
+
+	public function select($name="menu", $menulist = array()){
+		$html = '<select name="'.$name.'">';
+
+		foreach($menulist as $key => $val){
+			$active = '';
+			if(request()->input('menu') == $key){
+				$active = 'selected="selected"';
+			}
+			$html .= '<option '.$active.' value="'.$key.'">'.$val.'</option>';
+		}
+		$html .= '</select>';
+		return $html;
 	}
 }

@@ -10,28 +10,7 @@ use Harimayco\Menu\Models\MenuItem;
 
 class MenuController extends Controller
 {
-    public function wmenuindex(Menu $menu) {
-		$menuitems = new MenuItem();
-		$menulist = $menu->select(['id', 'name'])->get();
-		$menulist = $menulist->pluck('name', 'id')->prepend('Select menu', 0)-> all();
-
-		//$menulist[0] = "Select menu";
-		if (request()->has("action") || empty(request()->input("menu")) ) {
-			return view('wmenu::wmenuindex') -> with("menulist", $menulist);
-		} else {
-
-			$menu = Menu::find(request()->input("menu"));
-			$menus = $menuitems -> getall(request()->input("menu"));
-
-			
-
-			$data = [ 'menus' => $menus, 'indmenu' => $menu, 'menulist' => $menulist ];
-			\Debugbar::info();
-			return view('wmenu::wmenuindex', $data);
-		}
-
-	}
-
+    
 	public function createnewmenu() {
 
 		$menu = new Menu();

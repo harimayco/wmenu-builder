@@ -154,7 +154,7 @@ function createnewmenu() {
 			type : 'POST',
 			success : function(response) {
 
-				insertParam('menu', response.resp);
+				window.location = menuwr+"?menu=" + response.resp
 
 			}
 		});

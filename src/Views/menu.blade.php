@@ -1,10 +1,10 @@
 <?php
 $currentUrl = url()->current();
-$currentQuery = Input::query();
 
 ?>
 
 		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<link href="{{asset('vendor/harimayco-menu/style.css')}}" rel="stylesheet">
 
 		<script type="text/javascript">
@@ -42,7 +42,7 @@ $currentQuery = Input::query();
 								<form method="get" action="{{ $currentUrl }}">
 									<label for="menu" class="selected-menu">Select the menu you want to edit:</label>
 
-									{{ Form::select('menu', $menulist) }}
+									{!! Menu::select('menu', $menulist) !!}
 
 									<span class="submit-btn">
 										<input type="submit" class="button-secondary" value="Choose">
@@ -52,7 +52,7 @@ $currentQuery = Input::query();
 							</div>
 							<div id="nav-menus-frame">
 
-								@if(Input::has('menu')  && !empty(request()->input("menu")))
+								@if(request()->has('menu')  && !empty(request()->input("menu")))
 								<div id="menu-settings-column" class="metabox-holder">
 
 									<div class="clear"></div>
@@ -105,11 +105,11 @@ $currentQuery = Input::query();
 															<input type="hidden" id="idmenu" value="@if(isset($indmenu)){{$indmenu->id}}@endif" />
 														</label>
 
-														@if(Input::has('action'))
+														@if(request()->has('action'))
 														<div class="publishing-action">
 															<a onclick="createnewmenu()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Create menu</a>
 														</div>
-														@elseif(Input::has("menu"))
+														@elseif(request()->has("menu"))
 														<div class="publishing-action">
 															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
 														</div>
@@ -124,7 +124,7 @@ $currentQuery = Input::query();
 												<div id="post-body">
 													<div id="post-body-content">
 
-														@if(Input::has("menu"))
+														@if(request()->has("menu"))
 														<h3>Menu Structure</h3>
 														<div class="drag-instructions post-body-plain" style="">
 															<p>
@@ -175,7 +175,7 @@ $currentQuery = Input::query();
 																	</p>
 
 																	<p class="field-move hide-if-no-js description description-wide">
-																		<label> <span>Move</span> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-up" style="display: none;">Move up</a> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-down" title="Mover uno abajo" style="display: inline;">Move Down</a> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-left" style="display: none;"></a> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-right" style="display: none;"></a> <a href="{{ $currentUrl }}?action=edit&menu=26#" class="menus-move-top" style="display: none;">Top</a> </label>
+																		<label> <span>Move</span> <a href="{{ $currentUrl }}" class="menus-move-up" style="display: none;">Move up</a> <a href="{{ $currentUrl }}" class="menus-move-down" title="Mover uno abajo" style="display: inline;">Move Down</a> <a href="{{ $currentUrl }}" class="menus-move-left" style="display: none;"></a> <a href="{{ $currentUrl }}" class="menus-move-right" style="display: none;"></a> <a href="{{ $currentUrl }}" class="menus-move-top" style="display: none;">Top</a> </label>
 																	</p>
 
 																	<div class="menu-item-actions description-wide submitbox">
@@ -202,11 +202,11 @@ $currentQuery = Input::query();
 												<div id="nav-menu-footer">
 													<div class="major-publishing-actions">
 
-														@if(Input::has('action'))
+														@if(request()->has('action'))
 														<div class="publishing-action">
 															<a onclick="createnewmenu()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Create menu</a>
 														</div>
-														@elseif(Input::has("menu"))
+														@elseif(request()->has("menu"))
 														<span class="delete-action"> <a class="submitdelete deletion menu-delete" onclick="deletemenu()" href="javascript:void(9)">Delete menu</a> </span>
 														<div class="publishing-action">
 															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
@@ -248,6 +248,7 @@ $currentQuery = Input::query();
 				var deletemenugr= '{{ route("hdeletemenug") }}';
 				var createnewmenur= '{{ route("hcreatenewmenu") }}';
 				var csrftoken="{{ csrf_token() }}";
+				var menuwr = "{{ $currentUrl }}";
 			</script>
 			<div class="clear"></div>
 		</div>

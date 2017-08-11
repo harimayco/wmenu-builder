@@ -27,6 +27,11 @@ class MenuServiceProvider extends ServiceProvider
          $this->publishes([
             __DIR__.'/../assets' => public_path('vendor/harimayco-menu'),
         ], 'public');
+
+        $this->publishes([
+            __DIR__.'/../migrations/2017_08_11_073824_create_menus_table.php' => database_path('migrations/2017_08_11_073824_create_menus_table.php'),
+            __DIR__.'/../migrations/2017_08_11_074006_create_menu_items_table.php' => database_path('migrations/2017_08_11_074006_create_menu_items_table.php'),
+        ], 'migrations');
         
     }
 
