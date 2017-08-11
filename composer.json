@@ -21,6 +21,5 @@
         "psr-4": {
           "Harimayco\\Menu\\": "src/"
         }
-    },
-    "license": "MIT"
+    }
 }
