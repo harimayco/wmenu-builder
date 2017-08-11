@@ -1,6 +1,6 @@
 <?php
 
-Route::middleware(config('menu.middleware'))->group(function () {
+Route::group(['middleware' => config('menu.middleware')], function () {
 	//Route::get('wmenuindex', array('uses'=>'\Harimayco\Menu\Controllers\MenuController@wmenuindex'));
 	Route::post('harimayco/addcustommenu', array( 'as' => 'haddcustommenu', 'uses'=>'\Harimayco\Menu\Controllers\MenuController@addcustommenu'));
 	Route::post('harimayco/deleteitemmenu', array('as' => 'hdeleteitemmenu', 'uses'=>'\Harimayco\Menu\Controllers\MenuController@deleteitemmenu'));
