@@ -2,7 +2,6 @@
 
 forked from https://github.com/lordmacu/wmenu
 ![Laravel drag and drop menu](https://s28.postimg.org/pfxhnqcgd/screenshot_20170811_150313.png)
-*note: you need to set minimim-stability to 'dev' if you want to install this package
 
 ### Installation
 1. Run
