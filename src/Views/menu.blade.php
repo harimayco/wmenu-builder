@@ -112,6 +112,7 @@ $currentUrl = url()->current();
 														@elseif(request()->has("menu"))
 														<div class="publishing-action">
 															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
+															<span class="spinner" id="spincustomu2"></span>
 														</div>
 
 														@else
@@ -209,7 +210,9 @@ $currentUrl = url()->current();
 														@elseif(request()->has("menu"))
 														<span class="delete-action"> <a class="submitdelete deletion menu-delete" onclick="deletemenu()" href="javascript:void(9)">Delete menu</a> </span>
 														<div class="publishing-action">
+
 															<a onclick="getmenus()" name="save_menu" id="save_menu_header" class="button button-primary menu-save">Save menu</a>
+															<span class="spinner" id="spincustomu2"></span>
 														</div>
 
 														@else

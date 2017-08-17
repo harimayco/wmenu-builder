@@ -43,15 +43,19 @@ function addcustommenu() {
 		url : addcustommenur,
 		type : 'POST',
 		success : function(response) {
-			$("#spincustomu").hide();
+			
 			window.location = "";
 
+		},
+		complete: function(){
+			$("#spincustomu").hide();
 		}
+
 	});
 }
 
 function updateitem(id) {
-
+	
 	var label = $("#idlabelmenu_" + id).val()
 	var clases = $("#clases_menu_" + id).val()
 	var url = $("#url_menu_" + id).val()
@@ -65,13 +69,18 @@ function updateitem(id) {
 
 		url :updateitemr,
 		type : 'POST',
+		beforeSend: function(xhr){
+			$("#spincustomu2").show();
+		},
 		success : function(response) {
 
 			$("#menutitletemp_" + id).val(label)
 
-			console.log("aqu llega")
-							//$("#spinsavemenu").hide();
-						}
+		
+						},
+		complete: function(){
+			$("#spincustomu2").hide();
+		}
 					});
 }
 
@@ -87,10 +96,16 @@ function actualizarmenu() {
 
 		url : generatemenucontrolr,
 		type : 'POST',
+		beforeSend: function(xhr) {
+			$("#spincustomu2").show();
+		},
 		success : function(response) {
 
 			console.log("aqu llega")
-			$("#spinsavemenu").hide();
+			
+		},
+		complete: function(){
+			$("#spincustomu2").hide();
 		}
 	});
 }
@@ -125,12 +140,21 @@ function deletemenu() {
 
 			url : deletemenugr,
 			type : 'POST',
+			beforeSend: function(xhr){
+				$("#spincustomu2").show();
+			},
 			success : function(response) {
 
 				if (!response.error) {
+					alert(response.resp);
+					window.location = menuwr
+				}else{
 					alert(response.resp)
 				}
 
+			},
+			complete: function(){
+				$("#spincustomu2").hide();
 			}
 		});
 

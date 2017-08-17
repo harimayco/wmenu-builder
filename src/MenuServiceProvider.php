@@ -14,7 +14,9 @@ class MenuServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        require  __DIR__.'/routes.php';
+        if (! $this->app->routesAreCached()) {
+                require  __DIR__.'/routes.php';
+        }
 
         $this->publishes([
             __DIR__.'/../config/menu.php'  => config_path('menu.php'),

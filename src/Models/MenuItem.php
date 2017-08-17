@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class MenuItem extends Model
 {
+
+	protected $table = 'menu_items';
+
+	public function __construct( array $attributes = [] ){
+    	//parent::construct( $attributes );
+    	$this->table = config('menu.table_prefix') . $this->table;
+    }
+
     public function getsons($id) {
 		return $this -> where("parent", $id) -> get();
 	}

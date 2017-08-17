@@ -13,7 +13,7 @@ class CreateMenuItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu_items', function (Blueprint $table) {
+        Schema::create( config('menu.table_prefix') . 'menu_items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('label');
             $table->string('link');
@@ -37,6 +37,6 @@ class CreateMenuItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu_items');
+        Schema::dropIfExists( config('menu.table_prefix') . 'menu_items');
     }
 }
