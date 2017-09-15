@@ -2,13 +2,12 @@
 $currentUrl = url()->current();
 
 ?>
-
-		<meta name="viewport" content="width=device-width,initial-scale=1.0">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-		<link href="{{asset('vendor/harimayco-menu/style.css')}}" rel="stylesheet">
-
-		<script type="text/javascript">
-			var menus = {
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link href="{{asset('vendor/harimayco-menu/style.css')}}" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+	var menus = {
 				"oneThemeLocationNoMenus" : "",
 				"moveUp" : "Move up",
 				"moveDown" : "Mover down",
@@ -20,12 +19,19 @@ $currentUrl = url()->current();
 				"menuFocus" : "%1$s. Element menu %2$d of %3$d.",
 				"subMenuFocus" : "%1$s. Menu of subelement %2$d of %3$s."
 			};
-		</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script>
+	var arraydata = [];     
+	var addcustommenur= '{{ route("haddcustommenu") }}';
+	var updateitemr= '{{ route("hupdateitem")}}';
+	var generatemenucontrolr= '{{ route("hgeneratemenucontrol") }}';
+	var deleteitemmenur= '{{ route("hdeleteitemmenu") }}';
+	var deletemenugr= '{{ route("hdeletemenug") }}';
+	var createnewmenur= '{{ route("hcreatenewmenu") }}';
+	var csrftoken="{{ csrf_token() }}";
+	var menuwr = "{{ $currentUrl }}";
+
 	$.ajaxSetup({
 	    headers: {
-	        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	        'X-CSRF-TOKEN': csrftoken
 	    }
 	});
 </script>
@@ -240,19 +246,6 @@ $currentUrl = url()->current();
 
 			<script type="text/javascript" src="{{asset('vendor/harimayco-menu/scripts2.js')}}"></script>
 			<script type="text/javascript" src="{{asset('vendor/harimayco-menu/menu.js')}}"></script>
-
-			<script>
-				var arraydata = [];     
-				
-				var addcustommenur= '{{ route("haddcustommenu") }}';
-				var updateitemr= '{{ route("hupdateitem")}}';
-				var generatemenucontrolr= '{{ route("hgeneratemenucontrol") }}';
-				var deleteitemmenur= '{{ route("hdeleteitemmenu") }}';
-				var deletemenugr= '{{ route("hdeletemenug") }}';
-				var createnewmenur= '{{ route("hcreatenewmenu") }}';
-				var csrftoken="{{ csrf_token() }}";
-				var menuwr = "{{ $currentUrl }}";
-			</script>
 			<div class="clear"></div>
 		</div>
 
