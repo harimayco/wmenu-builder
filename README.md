@@ -8,11 +8,13 @@ forked from https://github.com/lordmacu/wmenu
 ```php
 composer require harimayco/laravel-menu
 ```
-2. Add the following class, to "providers" array in the file config/app.php
+***Step 2 & 3 are optional if you are using laravel 5.5***
+
+2. Add the following class, to "providers" array in the file config/app.php (optional on laravel 5.5)
 ```php
 Harimayco\Menu\MenuServiceProvider::class,
 ```
-3. add facade in the file config/app.php
+3. add facade in the file config/app.php (optional on laravel 5.5)
 ```php
 'Menu' => Harimayco\Menu\Facades\Menu::class,
 ```
@@ -54,5 +56,5 @@ you can edit the menu interface in ***resources/view/vendor/harimayco-menu/menu.
  * [wmenu](https://github.com/lordmacu/wmenu) laravel package menu like wordpress
 
 ### Compability
-* Tested with laravel 5.2, 5.3, 5.4 
+* Tested with laravel 5.2, 5.3, 5.4, 5.5
 
