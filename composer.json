@@ -21,5 +21,15 @@
         "psr-4": {
           "Harimayco\\Menu\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Harimayco\\Menu\\MenuServiceProvider"
+            ],
+            "aliases": {
+                "Menu": "Harimayco\\Menu\\Facades\\Menu"
+            }
+        }
     }
 }
