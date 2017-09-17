@@ -23,7 +23,7 @@ class MenuServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-           __DIR__.'/Views/menu.blade.php'   => resource_path('views/vendor/harimayco-menu/menu.blade.php'),
+           __DIR__.'/Views'   => resource_path('views/vendor/harimayco-menu'),
         ], 'view');
 
          $this->publishes([

@@ -35,10 +35,19 @@ php artisan vendor:publish --provider="Harimayco\Menu\MenuServiceProvider"
  DONE
  
 
-### Usage
-you can simply add this code to your view
+### Usage Example
+On your view blade file
 ```php
-{!! Menu::render() !!}
+@extends('app')
+
+@section('contents')
+    {!! Menu::render() !!}
+@endsection
+
+//YOU MUST HAVE JQUERY LOADED BEFORE menu scripts
+@push('scripts')
+    {!! Menu::scripts() !!}
+@endpush
 ```
 
 ### Using The Model
@@ -49,7 +58,7 @@ use Harimayco\Menu\Models\MenuItem;
 ```
 
 ### Customization
-you can edit the menu interface in ***resources/view/vendor/harimayco-menu/menu.blade.php***
+you can edit the menu interface in ***resources/view/vendor/harimayco-menu/menu-html.blade.php***
 
 ### Credits
 

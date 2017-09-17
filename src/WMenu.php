@@ -26,9 +26,13 @@ class WMenu
 
 			$data = [ 'menus' => $menus, 'indmenu' => $menu, 'menulist' => $menulist ];
 			//\Debugbar::info();
-			return view('vendor.harimayco-menu.menu', $data);
+			return view('vendor.harimayco-menu.menu-html', $data);
 		}
 
+	}
+
+	public function scripts(){
+		return view('vendor.harimayco-menu.scripts');
 	}
 
 	public function select($name="menu", $menulist = array()){

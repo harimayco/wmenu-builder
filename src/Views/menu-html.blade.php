@@ -2,39 +2,9 @@
 $currentUrl = url()->current();
 
 ?>
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<link href="{{asset('vendor/harimayco-menu/style.css')}}" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script>
-	var menus = {
-				"oneThemeLocationNoMenus" : "",
-				"moveUp" : "Move up",
-				"moveDown" : "Mover down",
-				"moveToTop" : "Move top",
-				"moveUnder" : "Move under of %s",
-				"moveOutFrom" : "Out from under  %s",
-				"under" : "Under %s",
-				"outFrom" : "Out from %s",
-				"menuFocus" : "%1$s. Element menu %2$d of %3$d.",
-				"subMenuFocus" : "%1$s. Menu of subelement %2$d of %3$s."
-			};
-	var arraydata = [];     
-	var addcustommenur= '{{ route("haddcustommenu") }}';
-	var updateitemr= '{{ route("hupdateitem")}}';
-	var generatemenucontrolr= '{{ route("hgeneratemenucontrol") }}';
-	var deleteitemmenur= '{{ route("hdeleteitemmenu") }}';
-	var deletemenugr= '{{ route("hdeletemenug") }}';
-	var createnewmenur= '{{ route("hcreatenewmenu") }}';
-	var csrftoken="{{ csrf_token() }}";
-	var menuwr = "{{ $currentUrl }}";
-
-	$.ajaxSetup({
-	    headers: {
-	        'X-CSRF-TOKEN': csrftoken
-	    }
-	});
-</script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="{{asset('vendor/harimayco-menu/style.css')}}" rel="stylesheet">
 <div id="hwpwrap">
 	<div class="custom-wp-admin wp-admin wp-core-ui js   menu-max-depth-0 nav-menus-php auto-fold admin-bar">
 		<div id="wpwrap">
@@ -242,12 +212,8 @@ $currentUrl = url()->current();
 				</div>
 				<div class="clear"></div>
 			</div>
-			<script type="text/javascript" src="{{asset('vendor/harimayco-menu/scripts.js')}}"></script>
-
-			<script type="text/javascript" src="{{asset('vendor/harimayco-menu/scripts2.js')}}"></script>
-			<script type="text/javascript" src="{{asset('vendor/harimayco-menu/menu.js')}}"></script>
+			
 			<div class="clear"></div>
 		</div>
-
-</div>
+	</div>
 </div>
