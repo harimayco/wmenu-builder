@@ -50,11 +50,22 @@ On your view blade file
 @endpush
 ```
 
+### Get Menu Items By Menu ID
+```php
+use Harimayco\Menu\Facades\Menu;
+...
+/*
+Parameter: Menu ID
+Return: Array
+*/
+$menuList = Menu::list(1);
+```
+
 ### Using The Model
 Call the model class 
 ```php
-use Harimayco\Menu\Models\Menu;
-use Harimayco\Menu\Models\MenuItem;
+use Harimayco\Menu\Models\Menus;
+use Harimayco\Menu\Models\MenuItems;
 ```
 
 ### Customization
