@@ -4,7 +4,7 @@ namespace Harimayco\Menu\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class Menus extends Model
 {
     protected $table = 'menus';
 

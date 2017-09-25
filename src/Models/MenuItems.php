@@ -4,7 +4,7 @@ namespace Harimayco\Menu\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MenuItem extends Model
+class MenuItems extends Model
 {
 
 	protected $table = 'menu_items';
