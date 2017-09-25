@@ -40,12 +40,22 @@ class MenuController extends Controller
 	}
 
 	public function updateitem() {
-
-		$menuitem = MenuItem::find(request()->input("id"));
-		$menuitem -> label = request()->input("label");
-		$menuitem -> link = request()->input("url");
-		$menuitem -> class = request()->input("clases");
-		$menuitem -> save();
+		$arraydata = request()->input("arraydata");
+		if(is_array($arraydata)){
+			foreach ($arraydata as $value) {
+				$menuitem = MenuItem::find($value['id']);
+				$menuitem->label = $value['label'];
+				$menuitem->link = $value['link'];
+				$menuitem->class = $value['class'];
+				$menuitem->save();
+			}
+		}else{
+			$menuitem = MenuItem::find(request()->input("id"));
+			$menuitem->label = request()->input("label");
+			$menuitem->link = request()->input("url");
+			$menuitem->class = request()->input("clases");
+			$menuitem->save();
+		}
 	}
 
 	public function addcustommenu() {

@@ -1,5 +1,6 @@
 var arraydata = [];
 function getmenus() {
+	arraydata = [];
 	$("#spinsavemenu").show()
 
 	var cont = 0;
@@ -12,7 +13,7 @@ function getmenus() {
 				dept = i;
 			}
 		};
-		var textoiner = $(this).find(".item-edit").context.outerText;
+		var textoiner = $(this).find(".item-edit").text();
 		var id = this.id.split("-");
 		var textoexplotado = textoiner.split("|"); 
 		var padre = 0;  
@@ -27,6 +28,7 @@ function getmenus() {
 		})
 		cont++;
 	});
+	updateitem();
 	actualizarmenu();
 }
 
@@ -54,32 +56,50 @@ function addcustommenu() {
 	});
 }
 
-function updateitem(id) {
+function updateitem(id = 0) {
 	
-	var label = $("#idlabelmenu_" + id).val()
-	var clases = $("#clases_menu_" + id).val()
-	var url = $("#url_menu_" + id).val()
-	$.ajax({
-		data : {
+	if(id){
+		var label = $("#idlabelmenu_" + id).val()
+		var clases = $("#clases_menu_" + id).val()
+		var url = $("#url_menu_" + id).val()
+		var data = {
 			label : label,
 			clases : clases,
 			url : url,
 			id : id
-		},
+		}
+	}else{
+		var arr_data = [];
+		$('.menu-item-settings').each(function(k, v){
+			var id = $(this).find(".edit-menu-item-id").val();
+			var label = $(this).find(".edit-menu-item-title").val();
+			var clases = $(this).find(".edit-menu-item-classes").val();
+			var url = $(this).find(".edit-menu-item-url").val();
+			arr_data.push({
+				id : id,
+				label : label,
+				class : clases,
+				link : url
+			});
+		});
 
+		var data = {arraydata: arr_data};
+	}
+	$.ajax({
+		data : data,
 		url :updateitemr,
 		type : 'POST',
 		beforeSend: function(xhr){
-			$("#spincustomu2").show();
+			if(id){
+				$("#spincustomu2").show();
+			}
 		},
 		success : function(response) {
-
-			$("#menutitletemp_" + id).val(label)
-
-		
 						},
 		complete: function(){
-			$("#spincustomu2").hide();
+			if(id){
+				$("#spincustomu2").hide();
+			}
 		}
 					});
 }

@@ -130,6 +130,7 @@ $currentUrl = url()->current();
 																</dl>
 
 																<div class="menu-item-settings" id="menu-item-settings-{{$m->id}}">
+																	<input type="hidden" class="edit-menu-item-id" name="menuid_{{$m->id}}" value="{{$m->id}}" />
 																	<p class="description description-thin">
 																		<label for="edit-menu-item-title-{{$m->id}}"> Label
 																			<br>
@@ -144,10 +145,10 @@ $currentUrl = url()->current();
 																		</label>
 																	</p>
 
-																	<p class="field-css-classes description description-wide">
-																		<label for="edit-menu-item-classes-{{$m->id}}"> Url
+																	<p class="field-css-url description description-wide">
+																		<label for="edit-menu-item-url-{{$m->id}}"> Url
 																			<br>
-																			<input type="text" id="url_menu_{{$m->id}}" class="widefat code edit-menu-item-classes" id="url_menu_{{$m->id}}" value="{{$m->link}}">
+																			<input type="text" id="url_menu_{{$m->id}}" class="widefat code edit-menu-item-url" id="url_menu_{{$m->id}}" value="{{$m->link}}">
 																		</label>
 																	</p>
 
