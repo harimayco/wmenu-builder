@@ -18,7 +18,7 @@ class WMenu
 
 		//$menulist[0] = "Select menu";
 		if ( (request()->has("action")  && empty(request()->input("menu"))) || request()->input("menu") == '0' ) {
-			return view('vendor.harimayco-menu.menu') -> with("menulist", $menulist);
+			return view('vendor.harimayco-menu.menu-html') -> with("menulist", $menulist);
 		} else {
 
 			$menu = Menu::find(request()->input("menu"));
