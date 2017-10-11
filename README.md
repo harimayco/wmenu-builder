@@ -69,7 +69,7 @@ use Harimayco\Menu\Models\MenuItems;
 ```
 
 ### Customization
-you can edit the menu interface in ***resources/view/vendor/harimayco-menu/menu-html.blade.php***
+you can edit the menu interface in ***resources/views/vendor/harimayco-menu/menu-html.blade.php***
 
 ### Credits
 
