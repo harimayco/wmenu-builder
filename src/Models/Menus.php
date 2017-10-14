@@ -12,4 +12,10 @@ class Menus extends Model
     	//parent::construct( $attributes );
     	$this->table = config('menu.table_prefix') . $this->table;
     }
+
+    public static function byName($name)
+    {
+        return self::where('name', '=', $name)->first();
+    }
+
 }

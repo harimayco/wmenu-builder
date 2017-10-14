@@ -49,17 +49,22 @@ class WMenu
 		return $html;
 	}
 
-	public function list($menu_id){
+    public static function listByName($name){
+        $menu_id = Menus::byName($name)->id;
+        return self::list($menu_id);
+    }
+
+	public static function list($menu_id){
 		$menuItem = new MenuItems;
 		$menu_list = $menuItem->getall($menu_id);
 
 		$roots = $menu_list->where('menu', $menu_id)->where('parent', '0');
 		
-		$items = $this->tree($roots, $menu_list);
+		$items = self::tree($roots, $menu_list);
 		return $items;
 	}
 
-	private function tree($items, $all_items){
+	private static function tree($items, $all_items){
 		$data_arr = array();
 		$i = 0;
 		foreach($items as $item){
@@ -69,7 +74,7 @@ class WMenu
 			$data_arr[$i]['child'] = array();
 
 			if($find->count()){
-				$data_arr[$i]['child'] = $this->tree($find, $all_items);
+				$data_arr[$i]['child'] = self::tree($find, $all_items);
 			}
 
 			$i++;
