@@ -32,9 +32,9 @@ php artisan vendor:publish --provider="Harimayco\Menu\MenuServiceProvider"
  ```php
  php artisan migrate
  ```
- 
+
  DONE
- 
+
 
 ### Usage Example
 On your view blade file
@@ -59,11 +59,24 @@ use Harimayco\Menu\Facades\Menu;
 Parameter: Menu ID
 Return: Array
 */
-$menuList = Menu::list(1);
+$menuList = Menu::get(1);
+```
+
+### Get Menu Items By Menu ID
+In this example, you must have a menu named  *Admin*
+
+```php
+use Harimayco\Menu\Facades\Menu;
+...
+/*
+Parameter: Menu ID
+Return: Array
+*/
+$menuList = Menu::getByName('Admin');
 ```
 
 ### Using The Model
-Call the model class 
+Call the model class
 ```php
 use Harimayco\Menu\Models\Menus;
 use Harimayco\Menu\Models\MenuItems;
@@ -78,4 +91,3 @@ you can edit the menu interface in ***resources/views/vendor/harimayco-menu/menu
 
 ### Compability
 * Tested with laravel 5.2, 5.3, 5.4, 5.5
-
