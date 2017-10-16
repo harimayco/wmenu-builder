@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class MenuItems extends Model
 {
 
-	protected $table = 'menu_items';
+	protected $table = null;
 
 	public function __construct( array $attributes = [] ){
     	//parent::construct( $attributes );
-    	$this->table = config('menu.table_prefix') . $this->table;
+    	$this->table = config('menu.table_prefix') . config('menu.table_name_items');
     }
 
     public function getsons($id) {
