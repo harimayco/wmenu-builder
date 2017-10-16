@@ -62,7 +62,7 @@ Return: Array
 $menuList = Menu::get(1);
 ```
 
-### Get Menu Items By Menu ID
+### Get Menu Items By Menu Name
 In this example, you must have a menu named  *Admin*
 
 ```php
