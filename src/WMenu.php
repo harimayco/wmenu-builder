@@ -40,7 +40,7 @@ class WMenu
 
         foreach ($menulist as $key => $val) {
             $active = '';
-            if (request()->input('menu') === $key) {
+            if (request()->input('menu') == $key) {
                 $active = 'selected="selected"';
             }
             $html .= '<option ' . $active . ' value="' . $key . '">' . $val . '</option>';
