@@ -1,6 +1,7 @@
 {
     "name": "harimayco/laravel-menu",
     "description": "drag and drop menu generator like wordpress for laravel 5",
+    "keywords": ["Laravel", "Menu", "Wordpress", "Builder"],
     "authors": [
     	{
             "name": "Rendy Harimayco",
