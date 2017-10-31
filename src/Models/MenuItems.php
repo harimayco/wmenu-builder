@@ -18,6 +18,11 @@ class MenuItems extends Model
 		return $this -> where("parent", $id) -> get();
 	}
 	public function getall($id) {
-		return $this -> where("menu", $id) -> orderBy("sort", "asc") -> get();
+		return $this -> where("menu", $id) -> orderBy("sort", "asc")->get();
 	}
+
+	public static function getNextSortRoot($menu){
+        return self::where('menu',$menu)->where('depth',0)->max('sort') + 1;
+    }
+
 }

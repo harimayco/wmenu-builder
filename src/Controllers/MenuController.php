@@ -2,6 +2,7 @@
 
 namespace Harimayco\Menu\Controllers;
 
+use Harimayco\Menu\Facades\Menu;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -69,6 +70,7 @@ class MenuController extends Controller
         $menuitem->label = request()->input("labelmenu");
         $menuitem->link = request()->input("linkmenu");
         $menuitem->menu = request()->input("idmenu");
+        $menuitem->sort = MenuItems::getNextSortRoot(request()->input("idmenu"));
         $menuitem->save();
 
     }
