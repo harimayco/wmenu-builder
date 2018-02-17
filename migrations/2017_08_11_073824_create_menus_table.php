@@ -13,7 +13,7 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create( config('menu.table_prefix') . 'menus', function (Blueprint $table) {
+        Schema::create( config('menu.table_prefix') . config('menu.table_name_menus'), function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
