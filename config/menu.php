@@ -6,7 +6,7 @@ return [
 	'middleware' => [],
 
 	/* you can set your own table prefix here */
-	'table_prefix' => '',
+	'table_prefix' => 'admin_',
 
     /* you can set your own table names */
     'table_name_menus' => 'menus',
