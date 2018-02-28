@@ -60,7 +60,7 @@ class WMenu
         $menuItem = new MenuItems;
         $menu_list = $menuItem->getall($menu_id);
 
-        $roots = $menu_list->where('menu', $menu_id)->where('parent', '0');
+        $roots = $menu_list->where('menu', (integer) $menu_id)->where('parent', 0);
 
         $items = self::tree($roots, $menu_list);
         return $items;
