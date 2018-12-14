@@ -36,7 +36,7 @@ php artisan vendor:publish --provider="Harimayco\Menu\MenuServiceProvider"
  DONE
 
 
-### Usage Example
+### Menu Builder Usage Example - displays the builder
 On your view blade file
 ```php
 @extends('app')
@@ -80,6 +80,43 @@ Call the model class
 ```php
 use Harimayco\Menu\Models\Menus;
 use Harimayco\Menu\Models\MenuItems;
+```
+
+### Menu Usage Example (a)
+A basic two-level menu can be displayed in your blade template
+```php
+// Used to get the menu items into the blade template
+$public_menu = Menu::getByName('Public');
+
+```
+### Menu Usage Example (b)
+Now inside your blade template file place the menu using this simple example
+```php
+<div class="nav-wrap">
+    <div class="btn-menu">
+        <span></span>
+    </div><!-- //mobile menu button -->
+    <nav id="mainnav" class="mainnav">
+    
+        @if($public_menu)
+        <ul class="menu">
+            @foreach($public_menu as $menu)
+            <li class="">
+                <a href="{{ $menu['link'] }}" title="">{{ $menu['label'] }}</a>
+                @if( $menu['child'] )
+                <ul class="sub-menu">
+                    @foreach( $menu['child'] as $child )
+                        <li class=""><a href="{{ $child['link'] }}" title="">{{ $child['label'] }}</a></li>
+                    @endforeach
+                </ul><!-- /.sub-menu -->
+                @endif
+            </li>
+            @endforeach
+        @endif
+
+        </ul><!-- /.menu -->
+    </nav><!-- /#mainnav -->
+ </div><!-- /.nav-wrap -->
 ```
 
 ### Customization
