@@ -39,6 +39,7 @@ function addcustommenu() {
 		data : {
 			labelmenu : $("#custom-menu-item-name").val(),
 			linkmenu : $("#custom-menu-item-url").val(),
+			rolemenu : $("#custom-menu-item-role").val(),
 			idmenu : $("#idmenu").val()
 		},
 
@@ -62,10 +63,16 @@ function updateitem(id = 0) {
 		var label = $("#idlabelmenu_" + id).val()
 		var clases = $("#clases_menu_" + id).val()
 		var url = $("#url_menu_" + id).val()
+		var role_id = 0
+		if($("#role_id_" + id).length >0 ) {
+			 role_id = $("#role_id_" + id).val()
+		}
+
 		var data = {
 			label : label,
 			clases : clases,
 			url : url,
+			role_id : role_id,
 			id : id
 		}
 	}else{

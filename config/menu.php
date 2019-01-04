@@ -15,4 +15,14 @@ return [
 
     /* you can set your route path*/
     'route_path' => '/harimayco/',
+
+    /* here you can make menu items visible to specific roles */
+    'use_roles' => true,
+
+    /* If use_roles = true above then must set the table name, primary key and title field to get roles details */
+    'roles_table' => 'roles',
+
+    'roles_pk' => 'id', // primary key of the roles table
+
+    'roles_title_field' => 'name', // display name (field) of the roles table
 ];

@@ -27,6 +27,8 @@ php artisan vendor:publish --provider="Harimayco\Menu\MenuServiceProvider"
 - ***TABLE PREFIX:*** By default this package will create 2 new tables named "menus" and "menu_items" but you can still add your own table prefix avoiding conflict with existing table
 - ***TABLE NAMES*** If you want use specific name of tables you have to modify that and the migrations
 - ***Custom routes*** If you want to edit the route path you can edit the field
+- ***Role Access*** If you want to enable roles (permissions) on menu items
+
 6. Run migrate
 
  ```php
