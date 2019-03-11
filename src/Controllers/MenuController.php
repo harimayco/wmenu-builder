@@ -52,6 +52,9 @@ class MenuController extends Controller
                 $menuitem->label = $value['label'];
                 $menuitem->link = $value['link'];
                 $menuitem->class = $value['class'];
+                if (config('menu.use_roles')) {
+                    $menuitem->role_id = $value['role_id'];
+                }
                 $menuitem->save();
             }
         } else {
@@ -59,6 +62,9 @@ class MenuController extends Controller
             $menuitem->label = request()->input("label");
             $menuitem->link = request()->input("url");
             $menuitem->class = request()->input("clases");
+            if (config('menu.use_roles')) {
+                $menuitem->role_id = request()->input("role_id");
+            }
             $menuitem->save();
         }
     }
@@ -69,6 +75,9 @@ class MenuController extends Controller
         $menuitem = new MenuItems();
         $menuitem->label = request()->input("labelmenu");
         $menuitem->link = request()->input("linkmenu");
+        if (config('menu.use_roles')) {
+            $menuitem->role_id = request()->input("role_id");
+        }
         $menuitem->menu = request()->input("idmenu");
         $menuitem->sort = MenuItems::getNextSortRoot(request()->input("idmenu"));
         $menuitem->save();
@@ -79,6 +88,7 @@ class MenuController extends Controller
     {
         $menu = Menus::find(request()->input("idmenu"));
         $menu->name = request()->input("menuname");
+
         $menu->save();
         if (is_array(request()->input("arraydata"))) {
             foreach (request()->input("arraydata") as $value) {
@@ -87,6 +97,9 @@ class MenuController extends Controller
                 $menuitem->parent = $value["parent"];
                 $menuitem->sort = $value["sort"];
                 $menuitem->depth = $value["depth"];
+                if (config('menu.use_roles')) {
+                    $menuitem->role_id = request()->input("role_id");
+                }
                 $menuitem->save();
             }
         }

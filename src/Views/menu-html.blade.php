@@ -53,6 +53,20 @@ $currentUrl = url()->current();
 																	</label>
 																</p>
 
+																@if($roles)
+																<p id="menu-item-role_id-wrap">
+																	<label class="howto" for="custom-menu-item-name"> <span>Role</span>&nbsp;
+																		<select id="custom-menu-item-role" name="role_id">
+																			<option value="0">Select Role</option>
+																			@foreach($roles as $role)
+																				<option value="{{ $role->id }}">{{ ucfirst($role->title) }}</option>
+																			@endforeach
+																		</select>
+																		<input id="custom-menu-item-name" name="label" type="text" class="regular-text menu-item-textbox input-with-default-title" title="Label menu">
+																	</label>
+																</p>
+																@endif
+
 																<p class="button-controls">
 
 																	<a  href="#" onclick="addcustommenu()"  class="button-secondary submit-add-to-menu right"  >Add menu item</a>
@@ -151,6 +165,22 @@ $currentUrl = url()->current();
 																			<input type="text" id="url_menu_{{$m->id}}" class="widefat code edit-menu-item-url" id="url_menu_{{$m->id}}" value="{{$m->link}}">
 																		</label>
 																	</p>
+
+																	@if($roles)
+																	<p class="field-css-role description description-wide">
+																		<label for="edit-menu-item-role-{{$m->id}}"> Role
+																			<br>
+																			<select id="role_menu_{{$m->id}}" class="widefat code edit-menu-item-role" id="role_menu_{{$m->id}}" >
+																				<option value="0">Select Role</option>
+																				@foreach($roles as $role)
+																					<option value="{{ $role->$role_pk }}">{{ ucwords($role->$role_title_field) }}</option>
+																				@endforeach
+
+																			</select>
+																			<input type="text" id="role_menu_{{$m->id}}" class="widefat code edit-menu-item-role" id="role_menu_{{$m->id}}" value="{{$m->link}}">
+																		</label>
+																	</p>
+																	@endif
 
 																	<p class="field-move hide-if-no-js description description-wide">
 																		<label> <span>Move</span> <a href="{{ $currentUrl }}" class="menus-move-up" style="display: none;">Move up</a> <a href="{{ $currentUrl }}" class="menus-move-down" title="Mover uno abajo" style="display: inline;">Move Down</a> <a href="{{ $currentUrl }}" class="menus-move-left" style="display: none;"></a> <a href="{{ $currentUrl }}" class="menus-move-right" style="display: none;"></a> <a href="{{ $currentUrl }}" class="menus-move-top" style="display: none;">Top</a> </label>

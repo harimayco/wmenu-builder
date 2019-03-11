@@ -5,6 +5,7 @@ namespace Harimayco\Menu;
 use App\Http\Requests;
 use Harimayco\Menu\Models\Menus;
 use Harimayco\Menu\Models\MenuItems;
+use DB;
 
 class WMenu
 {
@@ -24,6 +25,11 @@ class WMenu
             $menus = $menuitems->getall(request()->input("menu"));
 
             $data = ['menus' => $menus, 'indmenu' => $menu, 'menulist' => $menulist];
+            if( config('menu.use_roles')) {
+                $data['roles'] = DB::table(config('menu.roles_table'))->select([config('menu.roles_pk'),config('menu.roles_title_field')])->get();
+                $data['role_pk'] = config('menu.roles_pk');
+                $data['role_title_field'] = config('menu.roles_title_field');
+            }
             return view('vendor.harimayco-menu.menu-html', $data);
         }
 
