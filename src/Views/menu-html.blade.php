@@ -56,13 +56,12 @@ $currentUrl = url()->current();
 																@if($roles)
 																<p id="menu-item-role_id-wrap">
 																	<label class="howto" for="custom-menu-item-name"> <span>Role</span>&nbsp;
-																		<select id="custom-menu-item-role" name="role_id">
+																		<select id="custom-menu-item-role" name="role">
 																			<option value="0">Select Role</option>
 																			@foreach($roles as $role)
-																				<option value="{{ $role->id }}">{{ ucfirst($role->title) }}</option>
+																				<option value="{{ $role->$roles_pk }}">{{ ucfirst($role->$roles_title_field) }}</option>
 																			@endforeach
 																		</select>
-																		<input id="custom-menu-item-name" name="label" type="text" class="regular-text menu-item-textbox input-with-default-title" title="Label menu">
 																	</label>
 																</p>
 																@endif
@@ -170,14 +169,12 @@ $currentUrl = url()->current();
 																	<p class="field-css-role description description-wide">
 																		<label for="edit-menu-item-role-{{$m->id}}"> Role
 																			<br>
-																			<select id="role_menu_{{$m->id}}" class="widefat code edit-menu-item-role" id="role_menu_{{$m->id}}" >
+																			<select id="role_menu_{{$m->id}}" class="widefat code edit-menu-item-role" name="role_menu_[{{$m->id}}]" >
 																				<option value="0">Select Role</option>
 																				@foreach($roles as $role)
-																					<option value="{{ $role->$role_pk }}">{{ ucwords($role->$role_title_field) }}</option>
+																					<option @if($role->id == $m->role_id) selected @endif value="{{ $role->$roles_pk }}">{{ ucwords($role->$roles_title_field) }}</option>
 																				@endforeach
-
 																			</select>
-																			<input type="text" id="role_menu_{{$m->id}}" class="widefat code edit-menu-item-role" id="role_menu_{{$m->id}}" value="{{$m->link}}">
 																		</label>
 																	</p>
 																	@endif
