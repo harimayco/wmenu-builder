@@ -5,7 +5,6 @@ namespace Harimayco\Menu;
 use App\Http\Requests;
 use Harimayco\Menu\Models\Menus;
 use Harimayco\Menu\Models\MenuItems;
-use App\Role;
 use DB;
 
 class WMenu
