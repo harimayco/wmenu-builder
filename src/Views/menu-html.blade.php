@@ -53,7 +53,7 @@ $currentUrl = url()->current();
 																	</label>
 																</p>
 
-																@if($roles)
+																@if(!empty($roles))
 																<p id="menu-item-role_id-wrap">
 																	<label class="howto" for="custom-menu-item-name"> <span>Role</span>&nbsp;
 																		<select id="custom-menu-item-role" name="role_id">
@@ -166,7 +166,7 @@ $currentUrl = url()->current();
 																		</label>
 																	</p>
 
-																	@if($roles)
+																	@if(!empty($roles))
 																	<p class="field-css-role description description-wide">
 																		<label for="edit-menu-item-role-{{$m->id}}"> Role
 																			<br>
