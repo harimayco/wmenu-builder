@@ -64,8 +64,8 @@ function updateitem(id = 0) {
 		var clases = $("#clases_menu_" + id).val()
 		var url = $("#url_menu_" + id).val()
 		var role_id = 0
-		if($("#role_id_" + id).length >0 ) {
-			 role_id = $("#role_id_" + id).val()
+		if($("#role_menu_" + id).length  ) {
+			 role_id = $("#role_menu_" + id).val()
 		}
 
 		var data = {
@@ -82,11 +82,13 @@ function updateitem(id = 0) {
 			var label = $(this).find(".edit-menu-item-title").val();
 			var clases = $(this).find(".edit-menu-item-classes").val();
 			var url = $(this).find(".edit-menu-item-url").val();
+			var role = $(this).find(".edit-menu-item-role").val();
 			arr_data.push({
 				id : id,
 				label : label,
 				class : clases,
-				link : url
+				link : url,
+				role_id : role
 			});
 		});
 
