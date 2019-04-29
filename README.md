@@ -128,5 +128,5 @@ you can edit the menu interface in ***resources/views/vendor/harimayco-menu/menu
 
  * [wmenu](https://github.com/lordmacu/wmenu) laravel package menu like wordpress
 
-### Compability
-* Tested with laravel 5.2, 5.3, 5.4, 5.5
+### Compatibility
+* Tested with laravel 5.2, 5.3, 5.4, 5.5, 5.6, 5.7
