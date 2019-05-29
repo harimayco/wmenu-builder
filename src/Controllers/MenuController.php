@@ -53,7 +53,7 @@ class MenuController extends Controller
                 $menuitem->link = $value['link'];
                 $menuitem->class = $value['class'];
                 if (config('menu.use_roles')) {
-                    $menuitem->role_id = $value['role_id'];
+                    $menuitem->role_id = $value['role_id'] ? $value['role_id'] : 0 ;
                 }
                 $menuitem->save();
             }
@@ -63,7 +63,7 @@ class MenuController extends Controller
             $menuitem->link = request()->input("url");
             $menuitem->class = request()->input("clases");
             if (config('menu.use_roles')) {
-                $menuitem->role_id = request()->input("role_id");
+                $menuitem->role_id = request()->input("role_id") ? request()->input("role_id") : 0 ;
             }
             $menuitem->save();
         }
@@ -76,7 +76,7 @@ class MenuController extends Controller
         $menuitem->label = request()->input("labelmenu");
         $menuitem->link = request()->input("linkmenu");
         if (config('menu.use_roles')) {
-            $menuitem->role_id = request()->input("role_id");
+            $menuitem->role_id = request()->input("rolemenu") ? request()->input("rolemenu")  : 0 ;
         }
         $menuitem->menu = request()->input("idmenu");
         $menuitem->sort = MenuItems::getNextSortRoot(request()->input("idmenu"));
