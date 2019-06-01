@@ -51,6 +51,8 @@ class MenuServiceProvider extends ServiceProvider
 
         $this->app->make('Harimayco\Menu\Controllers\MenuController');
         $this->loadViewsFrom(__DIR__.'/views', 'wmenu');
-
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/menu.php', 'menu'
+        );
     }
 }
