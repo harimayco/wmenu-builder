@@ -1,6 +1,9 @@
 <?php
 $currentUrl = url()->current();
 
+$role_title = config('menu.roles_title_field');
+$role_id 	= config('menu.roles_pk');
+
 ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -59,7 +62,7 @@ $currentUrl = url()->current();
 																		<select id="custom-menu-item-role" name="role">
 																			<option value="0">Select Role</option>
 																			@foreach($roles as $role)
-																				<option value="{{ $role->$roles_pk }}">{{ ucfirst($role->$roles_title_field) }}</option>
+																				<option value="{{ $role->$role_id }}">{{ ucfirst($role->$role_title) }}</option>
 																			@endforeach
 																		</select>
 																	</label>
@@ -172,7 +175,7 @@ $currentUrl = url()->current();
 																			<select id="role_menu_{{$m->id}}" class="widefat code edit-menu-item-role" name="role_menu_[{{$m->id}}]" >
 																				<option value="0">Select Role</option>
 																				@foreach($roles as $role)
-																					<option @if($role->id == $m->role_id) selected @endif value="{{ $role->$roles_pk }}">{{ ucwords($role->$roles_title_field) }}</option>
+																					<option @if($role->id == $m->role_id) selected @endif value="{{ $role->$role_id }}">{{ ucwords($role->$role_title) }}</option>
 																				@endforeach
 																			</select>
 																		</label>
