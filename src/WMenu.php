@@ -57,10 +57,18 @@ class WMenu
         return $html;
     }
 
+
+    /**
+     * Returns empty array if menu not found now.
+     * Thanks @sovichet
+     *
+     * @param $name
+     * @return array
+     */
     public static function getByName($name)
     {
-        $menu_id = Menus::byName($name)->id;
-        return self::get($menu_id);
+        $menu = Menus::byName($name);
+        return is_null($menu) ? [] : self::get($menu->id);
     }
 
     public static function get($menu_id)
