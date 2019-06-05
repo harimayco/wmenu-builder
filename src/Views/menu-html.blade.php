@@ -1,13 +1,11 @@
 <?php
 $currentUrl = url()->current();
 
-$role_title = config('menu.roles_title_field');
-$role_id 	= config('menu.roles_pk');
-
 ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href="{{asset('vendor/harimayco-menu/style.css')}}" rel="stylesheet">
+
 <div id="hwpwrap">
 	<div class="custom-wp-admin wp-admin wp-core-ui js   menu-max-depth-0 nav-menus-php auto-fold admin-bar">
 		<div id="wpwrap">
@@ -62,7 +60,7 @@ $role_id 	= config('menu.roles_pk');
 																		<select id="custom-menu-item-role" name="role">
 																			<option value="0">Select Role</option>
 																			@foreach($roles as $role)
-																				<option value="{{ $role->$role_id }}">{{ ucfirst($role->$role_title) }}</option>
+																				<option value="{{ $role->$role_pk }}">{{ ucfirst($role->$role_title_field) }}</option>
 																			@endforeach
 																		</select>
 																	</label>
@@ -175,7 +173,7 @@ $role_id 	= config('menu.roles_pk');
 																			<select id="role_menu_{{$m->id}}" class="widefat code edit-menu-item-role" name="role_menu_[{{$m->id}}]" >
 																				<option value="0">Select Role</option>
 																				@foreach($roles as $role)
-																					<option @if($role->id == $m->role_id) selected @endif value="{{ $role->$role_id }}">{{ ucwords($role->$role_title) }}</option>
+																					<option @if($role->id == $m->role_id) selected @endif value="{{ $role->$role_pk }}">{{ ucwords($role->$role_title_field) }}</option>
 																				@endforeach
 																			</select>
 																		</label>
