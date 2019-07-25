@@ -14,7 +14,7 @@ $currentUrl = url()->current();
 					<div id="wpbody-content">
 
 						<div class="wrap">
-							
+
 							<div class="manage-menus">
 								<form method="get" action="{{ $currentUrl }}">
 									<label for="menu" class="selected-menu">Select the menu you want to edit:</label>
@@ -190,7 +190,7 @@ $currentUrl = url()->current();
 																		<span class="meta-sep hide-if-no-js"> | </span>
 																		<a class="item-cancel submitcancel hide-if-no-js button-secondary" id="cancel-{{$m->id}}" href="{{ $currentUrl }}?edit-menu-item={{$m->id}}&cancel=1424297719#menu-item-settings-{{$m->id}}">Cancel</a>
 																		<span class="meta-sep hide-if-no-js"> | </span>
-																		<a onclick="updateitem({{$m->id}})" class="button button-primary updatemenu" id="update-{{$m->id}}" href="javascript:void(0)">Update item</a>
+																		<a onclick="getmenus()" class="button button-primary updatemenu" id="update-{{$m->id}}" href="javascript:void(0)">Update item</a>
 
 																	</div>
 
@@ -241,7 +241,7 @@ $currentUrl = url()->current();
 				</div>
 				<div class="clear"></div>
 			</div>
-			
+
 			<div class="clear"></div>
 		</div>
 	</div>
