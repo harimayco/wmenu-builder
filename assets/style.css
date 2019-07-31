@@ -20,9 +20,6 @@
 #hwpwrap #wpcontent {
   height: 100%;
 }
-#hwpwrap .menu-item {
-  line-height: 0px;
-}
 #hwpwrap .folded #wpcontent, #hwpwrap .folded #wpfooter {
   margin-left: 36px;
 }
