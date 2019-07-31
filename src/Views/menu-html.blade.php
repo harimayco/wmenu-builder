@@ -1,11 +1,9 @@
 <?php
 $currentUrl = url()->current();
-
 ?>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href="{{asset('vendor/harimayco-menu/style.css')}}" rel="stylesheet">
-
 <div id="hwpwrap">
 	<div class="custom-wp-admin wp-admin wp-core-ui js   menu-max-depth-0 nav-menus-php auto-fold admin-bar">
 		<div id="wpwrap">
@@ -44,7 +42,7 @@ $currentUrl = url()->current();
 															<div class="customlinkdiv" id="customlinkdiv">
 																<p id="menu-item-url-wrap">
 																	<label class="howto" for="custom-menu-item-url"> <span>URL</span>&nbsp;&nbsp;&nbsp;
-																		<input id="custom-menu-item-url" name="url" type="text" class="code menu-item-textbox" value="http://">
+																		<input id="custom-menu-item-url" name="url" type="text" class="code menu-item-textbox input-with-default-title" placeholder="url">
 																	</label>
 																</p>
 
