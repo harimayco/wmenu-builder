@@ -42,7 +42,7 @@ $currentUrl = url()->current();
 															<div class="customlinkdiv" id="customlinkdiv">
 																<p id="menu-item-url-wrap">
 																	<label class="howto" for="custom-menu-item-url"> <span>URL</span>&nbsp;&nbsp;&nbsp;
-																		<input id="custom-menu-item-url" name="url" type="text" class="code menu-item-textbox input-with-default-title" placeholder="url">
+																		<input id="custom-menu-item-url" name="url" type="text" class="menu-item-textbox " placeholder="url">
 																	</label>
 																</p>
 
