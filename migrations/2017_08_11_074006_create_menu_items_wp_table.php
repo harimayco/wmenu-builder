@@ -14,13 +14,13 @@ class CreateMenuItemsWpTable extends Migration
     public function up()
     {
         Schema::create( config('menu.table_prefix') . config('menu.table_name_items') , function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('label');
             $table->string('link');
-            $table->integer('parent')->unsigned()->default(0);
+            $table->unsignedBigInteger('parent')->default(0);
             $table->integer('sort')->default(0);
             $table->string('class')->nullable();
-            $table->integer('menu')->unsigned();
+            $table->unsignedBigInteger('menu');
             $table->integer('depth')->default(0);
             $table->timestamps();
 
