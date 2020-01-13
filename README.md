@@ -152,4 +152,4 @@ you can edit the menu interface in **_resources/views/vendor/wmenu/menu-html.bla
 
 ### Compatibility
 
-- Tested with laravel 5.2, 5.3, 5.4, 5.5, 5.6, 5.7
+- Tested with laravel 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 6.x
