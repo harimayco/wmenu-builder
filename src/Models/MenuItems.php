@@ -30,4 +30,14 @@ class MenuItems extends Model
     {
         return self::where('menu', $menu)->max('sort') + 1;
     }
+
+    public function parent_menu()
+    {
+        return $this->belongsTo('Harimayco\Menu\Models\Menus', 'menu');
+    }
+
+    public function child()
+    {
+        return $this->hasMany('Harimayco\Menu\Models\MenuItems', 'parent')->orderBy('sort', 'ASC');
+    }
 }

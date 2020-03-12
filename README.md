@@ -65,32 +65,6 @@ On your view blade file
 @endpush
 ```
 
-### Get Menu Items By Menu ID
-
-```php
-use Harimayco\Menu\Facades\Menu;
-...
-/*
-Parameter: Menu ID
-Return: Array
-*/
-$menuList = Menu::get(1);
-```
-
-### Get Menu Items By Menu Name
-
-In this example, you must have a menu named _Admin_
-
-```php
-use Harimayco\Menu\Facades\Menu;
-...
-/*
-Parameter: Menu ID
-Return: Array
-*/
-$menuList = Menu::getByName('Admin');
-```
-
 ### Using The Model
 
 Call the model class
@@ -98,14 +72,33 @@ Call the model class
 ```php
 use Harimayco\Menu\Models\Menus;
 use Harimayco\Menu\Models\MenuItems;
+
 ```
 
 ### Menu Usage Example (a)
 
 A basic two-level menu can be displayed in your blade template
 
+##### Using Model Class
 ```php
-// Used to get the menu items into the blade template
+
+/* get menu by id*/
+$menu = Menus::find(1);
+/* or by name */
+$menu = Menus::where('name','Test Menu')->first();
+
+/* or get menu by name and the items with EAGER LOADING (RECOMENDED for better performance and less query call)*/
+$menu = Menus::where('name','Test Menu')->with('items')->first();
+/*or by id */
+$menu = Menus::where('id', 1)->with('items')->first();
+
+$public_menu = $menu->items;
+
+```
+
+##### or Using helper
+```php
+// Using Helper
 $public_menu = Menu::getByName('Public');
 
 ```
@@ -140,6 +133,34 @@ Now inside your blade template file place the menu using this simple example
         </ul><!-- /.menu -->
     </nav><!-- /#mainnav -->
  </div><!-- /.nav-wrap -->
+```
+
+### HELPERS
+
+### Get Menu Items By Menu ID
+
+```php
+use Harimayco\Menu\Facades\Menu;
+...
+/*
+Parameter: Menu ID
+Return: Array
+*/
+$menuList = Menu::get(1);
+```
+
+### Get Menu Items By Menu Name
+
+In this example, you must have a menu named _Admin_
+
+```php
+use Harimayco\Menu\Facades\Menu;
+...
+/*
+Parameter: Menu ID
+Return: Array
+*/
+$menuList = Menu::getByName('Admin');
 ```
 
 ### Customization
