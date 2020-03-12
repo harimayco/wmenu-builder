@@ -102,8 +102,8 @@ $public_menu = $menu->items->toArray();
 
 ##### or Using helper
 ```php
-// Using Helper
-$public_menu = Menu::getByName('Public');
+// Using Helper 
+$public_menu = Menu::getByName('Public'); //return array
 
 ```
 
