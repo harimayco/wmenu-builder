@@ -92,7 +92,11 @@ $menu = Menus::where('name','Test Menu')->with('items')->first();
 /*or by id */
 $menu = Menus::where('id', 1)->with('items')->first();
 
+//you can access by model result
 $public_menu = $menu->items;
+
+//or you can convert it to array
+$public_menu = $menu->items->toArray();
 
 ```
 
