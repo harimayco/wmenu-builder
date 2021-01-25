@@ -30,7 +30,8 @@ function getmenus() {
       depth: dept,
       id: id[2],
       parent: padre,
-      sort: cont
+      sort: cont,
+      role_id: $('#role_menu_' + id[2]).val()
     });
     cont++;
   });
