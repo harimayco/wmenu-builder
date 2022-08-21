@@ -1,12 +1,13 @@
 <?php
 
-namespace Harimayco\Menu\Models;
+namespace Wakatobi\Menu\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MenuItems extends Model
+class OpdMenuItems extends Model
 {
 
+    protected $connection = 'opd';  
     protected $table = null;
 
     protected $fillable = ['label', 'link', 'parent', 'sort', 'class', 'menu', 'depth', 'role_id'];
@@ -14,7 +15,8 @@ class MenuItems extends Model
     public function __construct(array $attributes = [])
     {
         //parent::construct( $attributes );
-        $this->table = config('menu.table_prefix') . config('menu.table_name_items');
+        $this->connection = config('opdmenu.connection_name');
+        $this->table = config('opdmenu.table_prefix') . config('opdmenu.table_name_items');
     }
 
     public function getsons($id)
@@ -33,11 +35,11 @@ class MenuItems extends Model
 
     public function parent_menu()
     {
-        return $this->belongsTo('Harimayco\Menu\Models\Menus', 'menu');
+        return $this->belongsTo('Wakatobi\Menu\Models\OpdMenus', 'menu');
     }
 
     public function child()
     {
-        return $this->hasMany('Harimayco\Menu\Models\MenuItems', 'parent')->orderBy('sort', 'ASC');
+        return $this->hasMany('Wakatobi\Menu\Models\OpdMenuItems', 'parent')->orderBy('sort', 'ASC');
     }
 }

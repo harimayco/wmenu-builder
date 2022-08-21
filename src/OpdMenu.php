@@ -1,13 +1,13 @@
 <?php
 
-namespace Harimayco\Menu;
+namespace Wakatobi\Menu;
 
 use App\Http\Requests;
-use Harimayco\Menu\Models\Menus;
-use Harimayco\Menu\Models\MenuItems;
+use Wakatobi\Menu\Models\OpdMenus as Menus;
+use Wakatobi\Menu\Models\OpdMenuItems as MenuItems;
 use Illuminate\Support\Facades\DB;
 
-class WMenu
+class OpdMenu
 {
 
     public function render()
@@ -20,26 +20,26 @@ class WMenu
         //$roles = Role::all();
 
         if ((request()->has("action") && empty(request()->input("menu"))) || request()->input("menu") == '0') {
-            return view('wmenu::menu-html')->with("menulist" , $menulist);
+            return view('opdmenu::menu-html')->with("menulist" , $menulist);
         } else {
 
             $menu = Menus::find(request()->input("menu"));
             $menus = $menuitems->getall(request()->input("menu"));
 
             $data = ['menus' => $menus, 'indmenu' => $menu, 'menulist' => $menulist];
-            if( config('menu.use_roles')) {
-                $data['roles'] = DB::table(config('menu.roles_table'))->select([config('menu.roles_pk'),config('menu.roles_title_field')])->get();
-                $data['role_pk'] = config('menu.roles_pk');
-                $data['role_title_field'] = config('menu.roles_title_field');
+            if( config('opdmenu.use_roles')) {
+                $data['roles'] = DB::table(config('opdmenu.roles_table'))->select([config('opdmenu.roles_pk'),config('opdmenu.roles_title_field')])->get();
+                $data['role_pk'] = config('opdmenu.roles_pk');
+                $data['role_title_field'] = config('opdmenu.roles_title_field');
             }
-            return view('wmenu::menu-html', $data);
+            return view('opdmenu::menu-html', $data);
         }
 
     }
 
     public function scripts()
     {
-        return view('wmenu::scripts');
+        return view('opdmenu::scripts');
     }
 
     public function select($name = "menu", $menulist = array())

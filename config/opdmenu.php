@@ -6,15 +6,17 @@ return [
    'middleware' => [],
 
 /* you can set your own table prefix here */
-    'table_prefix' => 'admin_',
+    'connection_name' => 'opd',
+/* you can set your own table prefix here */
+    'table_prefix' => 'homepage_',
 
 /* you can set your own table names */
-    'table_name_menus' => 'menus',
+    'table_name_menus' => 'menu',
 
-    'table_name_items' => 'menu_items',
+    'table_name_items' => 'menu_item',
 
 /* you can set your route path*/
-    'route_path' => '/harimayco/',
+    'route_path' => '/opd/',
 
 /* here you can make menu items visible to specific roles */
     'use_roles' => false,

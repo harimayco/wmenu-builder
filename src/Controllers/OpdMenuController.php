@@ -1,18 +1,18 @@
 <?php
 
-namespace Harimayco\Menu\Controllers;
+namespace Wakatobi\Menu\Controllers;
 
-use Harimayco\Menu\Facades\Menu;
+use Wakatobi\Menu\Facades\OpdMenu as Menu;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Harimayco\Menu\Models\Menus;
-use Harimayco\Menu\Models\MenuItems;
+use Illuminate\Routing\Controller;
+use Wakatobi\Menu\Models\OpdMenus as Menus;
+use Wakatobi\Menu\Models\OpdMenuItems as MenuItems;
 
-class MenuController extends Controller
+class OpdMenuController extends Controller
 {
 
-    public function createnewmenu()
+    public function opdcreatenewmenu()
     {
 
         $menu = new Menus();
@@ -21,14 +21,14 @@ class MenuController extends Controller
         return json_encode(array("resp" => $menu->id));
     }
 
-    public function deleteitemmenu()
+    public function opddeleteitemmenu()
     {
         $menuitem = MenuItems::find(request()->input("id"));
 
         $menuitem->delete();
     }
 
-    public function deletemenug()
+    public function opddeletemenug()
     {
         $menus = new MenuItems();
         $getall = $menus->getall(request()->input("id"));
@@ -43,7 +43,7 @@ class MenuController extends Controller
         }
     }
 
-    public function updateitem()
+    public function opdupdateitem()
     {
         $arraydata = request()->input("arraydata");
         if (is_array($arraydata)) {
@@ -51,8 +51,8 @@ class MenuController extends Controller
                 $menuitem = MenuItems::find($value['id']);
                 $menuitem->label = $value['label'];
                 $menuitem->link = $value['link'];
-                $menuitem->class = $value['class'];
-                if (config('menu.use_roles')) {
+                // $menuitem->class = $value['class'];
+                if (config('opdmenu.use_roles')) {
                     $menuitem->role_id = $value['role_id'] ? $value['role_id'] : 0 ;
                 }
                 $menuitem->save();
@@ -61,21 +61,21 @@ class MenuController extends Controller
             $menuitem = MenuItems::find(request()->input("id"));
             $menuitem->label = request()->input("label");
             $menuitem->link = request()->input("url");
-            $menuitem->class = request()->input("clases");
-            if (config('menu.use_roles')) {
+            // $menuitem->class = request()->input("clases");
+            if (config('opdmenu.use_roles')) {
                 $menuitem->role_id = request()->input("role_id") ? request()->input("role_id") : 0 ;
             }
             $menuitem->save();
         }
     }
 
-    public function addcustommenu()
+    public function opdaddcustommenu()
     {
 
         $menuitem = new MenuItems();
         $menuitem->label = request()->input("labelmenu");
         $menuitem->link = request()->input("linkmenu");
-        if (config('menu.use_roles')) {
+        if (config('opdmenu.use_roles')) {
             $menuitem->role_id = request()->input("rolemenu") ? request()->input("rolemenu")  : 0 ;
         }
         $menuitem->menu = request()->input("idmenu");
@@ -84,7 +84,7 @@ class MenuController extends Controller
 
     }
 
-    public function generatemenucontrol()
+    public function opdgeneratemenucontrol()
     {
         $menu = Menus::find(request()->input("idmenu"));
         $menu->name = request()->input("menuname");
@@ -97,7 +97,7 @@ class MenuController extends Controller
                 $menuitem->parent = $value["parent"];
                 $menuitem->sort = $value["sort"];
                 $menuitem->depth = $value["depth"];
-                if (config('menu.use_roles')) {
+                if (config('opdmenu.use_roles')) {
                     $menuitem->role_id = request()->input("role_id");
                 }
                 $menuitem->save();

@@ -1,14 +1,14 @@
 <?php 
-namespace Harimayco\Menu\Facades;
+namespace Wakatobi\Menu\Facades;
 use Illuminate\Support\Facades\Facade;
 
-class Menu extends Facade {
+class OpdMenu extends Facade {
     /**
      * Return facade accessor
      * @return string
      */
     protected static function getFacadeAccessor()
     {
-        return 'harimayco-menu';
+        return 'wakatobi-menu';
     }
 }

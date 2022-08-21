@@ -1,5 +1,5 @@
 {
-    "name": "harimayco/laravel-menu",
+    "name": "wakatobi-kab/wmenu-builder",
     "description": "drag and drop menu generator like wordpress for laravel 5",
     "keywords": ["Laravel", "Menu", "Wordpress", "Builder"],
     "authors": [
@@ -20,16 +20,16 @@
     },
     "autoload": {
         "psr-4": {
-          "Harimayco\\Menu\\": "src/"
+          "Wakatobi\\Menu\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Harimayco\\Menu\\MenuServiceProvider"
+                "Wakatobi\\Menu\\OpdMenuServiceProvider"
             ],
             "aliases": {
-                "Menu": "Harimayco\\Menu\\Facades\\Menu"
+                "OpdMenu": "Wakatobi\\Menu\\Facades\\OpdMenu"
             }
         }
     },
