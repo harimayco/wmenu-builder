@@ -5,7 +5,7 @@ namespace Wakatobi\Menu;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 
-class OpdMenuServiceProvider extends ServiceProvider
+class MenuServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -18,14 +18,14 @@ class OpdMenuServiceProvider extends ServiceProvider
             require  __DIR__ . '/routes.php';
         }
 
-        $this->loadViewsFrom(__DIR__ . '/Views', 'opdmenu');
+        $this->loadViewsFrom(__DIR__ . '/Views', 'web-menu');
 
         $this->publishes([
-            __DIR__ . '/../config/opdmenu.php'  => config_path('opdmenu.php'),
+            __DIR__ . '/../config/menu.php'  => config_path('menu.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__ . '/Views'   => resource_path('views/vendor/opdmenu'),
+            __DIR__ . '/Views'   => resource_path('views/vendor/web-menu'),
         ], 'view');
 
         $this->publishes([
@@ -46,14 +46,14 @@ class OpdMenuServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('wakatobi-opd-menu', function () {
-            return new OpdMenu();
+        $this->app->bind('wakatobi-web-menu', function () {
+            return new WebMenu();
         });
 
-        $this->app->make('Wakatobi\Menu\Controllers\OpdMenuController');
+        $this->app->make('Wakatobi\Menu\Controllers\MenuController');
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/opdmenu.php',
-            'opdmenu'
+            __DIR__ . '/../config/menu.php',
+            'menu'
         );
     }
 }

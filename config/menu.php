@@ -6,8 +6,6 @@ return [
    'middleware' => ['web.auth.authorizedToken'],
 
 /* you can set your own table prefix here */
-    'connection_name' => 'opd',
-/* you can set your own table prefix here */
     'table_prefix' => 'homepage_',
 
 /* you can set your own table names */
@@ -16,7 +14,7 @@ return [
     'table_name_items' => 'menu_item',
 
 /* you can set your route path*/
-    'route_path' => '/opd/',
+    'route_path' => '/admin/menu',
 
 /* here you can make menu items visible to specific roles */
     'use_roles' => false,
