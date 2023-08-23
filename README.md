@@ -1,6 +1,5 @@
-# Laravel Drag and Drop menu editor like wordpress
+# Laravel Drag and Drop Menu Editor like WordPress.
 
-### *This package is abandoned: I'm not maintaining this package anymore, please contact me if you want to take over this project or feel free to fork and make your own. Thank you 
 
 [![Latest Stable Version](https://poser.pugx.org/harimayco/laravel-menu/v/stable)](https://packagist.org/packages/harimayco/laravel-menu) [![Latest Unstable Version](https://poser.pugx.org/harimayco/laravel-menu/v/unstable)](https://packagist.org/packages/harimayco/laravel-menu) [![Total Downloads](https://poser.pugx.org/harimayco/laravel-menu/downloads)](https://packagist.org/packages/harimayco/laravel-menu) [![Monthly Downloads](https://poser.pugx.org/harimayco/laravel-menu/d/monthly)](https://packagist.org/packages/harimayco/laravel-menu)
 
@@ -15,15 +14,15 @@ forked from https://github.com/lordmacu/wmenu
 composer require harimayco/laravel-menu
 ```
 
-**_Step 2 & 3 are optional if you are using laravel 5.5_**
+**_Steps 2 & 3 are optional if you are using laravel 5.5_**
 
-2. Add the following class, to "providers" array in the file config/app.php (optional on laravel 5.5)
+2. Add the following class, to the "providers" array in the file config/app.php (optional on Laravel 5.5)
 
 ```php
 Harimayco\Menu\MenuServiceProvider::class,
 ```
 
-3. add facade in the file config/app.php (optional on laravel 5.5)
+3. Add facade in the file config/app.php (optional on Laravel 5.5)
 
 ```php
 'Menu' => Harimayco\Menu\Facades\Menu::class,
@@ -38,8 +37,8 @@ php artisan vendor:publish --provider="Harimayco\Menu\MenuServiceProvider"
 5. Configure (optional) in **_config/menu.php_** :
 
 - **_CUSTOM MIDDLEWARE:_** You can add you own middleware
-- **_TABLE PREFIX:_** By default this package will create 2 new tables named "menus" and "menu_items" but you can still add your own table prefix avoiding conflict with existing table
-- **_TABLE NAMES_** If you want use specific name of tables you have to modify that and the migrations
+- **_TABLE PREFIX:_** By default this package will create 2 new tables named "menus" and "menu_items" but you can still add your own table prefix avoiding conflict with the existing table
+- **_TABLE NAMES_** If you want use the specific names of tables you have to modify that and the migrations
 - **_Custom routes_** If you want to edit the route path you can edit the field
 - **_Role Access_** If you want to enable roles (permissions) on menu items
 
